@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WDD330 | Week 2 Notes | Brandon Rock</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>WDD330 Portfolio - Week 2 Notes</h1>
+      <h2>By Brandon Rock</h2>
+    </header>
+    <main>
+      <h3>Week 2</h3>
+      <h4>Chapter 2: Programming Basics</h4>
+      <ul>
+        <li>
+          <p>Why is it not necessary to add semicolons in JavaScript?</p>
+          <em
+            >JavaScript interpreters use Automatic Semicolon Insertion (ASI).
+            But, it is considered best practice two write and terminate each
+            statement on a new line to avoid causing confusion with automated
+            validators and minifiers.</em
+          >
+        </li>
+
+        <li>
+          Primitive Data Types
+          <ul>
+            <li>String</li>
+            <li>Symbol - ES6+</li>
+            <li>Number</li>
+            <li>Boolean</li>
+            <li>Undefined</li>
+            <li>Null</li>
+          </ul>
+        </li>
+
+        <li>
+          String Escape Characters
+          <ul>
+            Single quote: '`
+          </ul>
+          <ul>
+            Double quote: `"
+          </ul>
+          <ul>
+            End of line: \n
+          </ul>
+          <ul>
+            Carriage return: \r
+          </ul>
+          <ul>
+            Tab: \t
+          </ul>
+        </li>
+
+        <li>
+          <p>What is a symbol?</p>
+          <em
+            >A symbol is a primitive value that was introduced in ES6. It can be
+            used to create unique values. They are used as object property
+            keys.</em
+          >
+        </li>
+
+        <li>
+          <p>Falsy Values</p>
+          <ul>
+            <li>""</li>
+            <li>''</li>
+            <li>``</li>
+            <li>0</li>
+            <li>-0</li>
+            <li>NaN</li>
+            <li>false</li>
+            <li>null</li>
+            <li>undefined</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Chapter 3: Arrays, Logic, and Loops</h4>
+      <ul>
+        <li>
+          Array Methods
+          <ul>
+            <li>pop - Remove the last item.</li>
+            <li>push - Append an item to the end.</li>
+            <li>shift - Remove the first item.</li>
+            <li>unshift - Insert an item at the start.</li>
+            <li>concat - Merge one or more arrays.</li>
+            <li>
+              join - Convert all entries into a single comma-delimited string.
+            </li>
+            <li>slice - Create a subarray.</li>
+            <li>
+              splice - Remove an item and insert new items in its place. Returns
+              an array of removed items.
+            </li>
+            <li>reverse - Reverse the order.</li>
+            <li>sort - Sorts items alphabetically.</li>
+          </ul>
+        </li>
+
+        <li>
+          Sets To create a set of words, use the .add() method: new
+          Set().add('the').add('quick'). Here is a list of methods:
+          <ul>
+            <li>size - Return the number of values.</li>
+            <li>has - Returns true if an entry exists.</li>
+            <li>delete - Remove a value from the set.</li>
+            <li>clear - Remove all values from the set.</li>
+          </ul>
+        </li>
+
+        <li>
+          Maps Equivalent to 'hash tables' or 'dictionaries' in other languages.
+          Here is a list of methods:
+          <ul>
+            <li>set - Add a key/value pair.</li>
+            <li>get - Get a value by its key.</li>
+            <li>has - Check if a key exists.</li>
+            <li>delete - Delete en entry by its key.</li>
+            <li>clear - Remove all key/value pairs.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Chapter 4: Functions</h4>
+      <ul>
+        <li>Declaration: function hello() { }</li>
+        <li>Expression: const hello = function() {}</li>
+        <li>Functions return undefined by default.</li>
+        <li>
+          <p>What is the difference between parameters and arguments?</p>
+          <p>
+            <em
+              >Parameters are set when a function is defined. Arguments are
+              passed to a function when it is invoked.</em
+            >
+          </p>
+        </li>
+        <li>Callback - A function that is passed as an argument to another.</li>
+        <li>Array Iterators - Functions that process elements in an array. They can be chained together.
+          <ul>
+            <li>forEach - Iterate over the entries of an array, passing in each value as an argument.</li>
+            <li>map - Convert each entry in an array to a new value.</li>
+            <li>reduce - Accumulate values, two at a time, until a single value remains.</li>
+            <li>filter - Return a new array of items that return true in their callback.</li>
+          </ul>
+        </li>
+      </ul>
+    </main>
+  </body>
+</html>
