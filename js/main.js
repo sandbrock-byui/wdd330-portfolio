@@ -8,6 +8,10 @@ const renderToc = function () {
       label: "Week 2 Notes",
       url: "week02/index.html",
     },
+    {
+      label: "Week 3 Notes",
+      url: "week03/index.html",
+    }
   ];
 
   // Get Table of Contents root element
