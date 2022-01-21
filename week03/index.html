@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WDD330 | Week 2 Notes | Brandon Rock</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>WDD330 Portfolio - Week 2 Notes</h1>
+      <h2>By Brandon Rock</h2>
+    </header>
+    <main>
+      <h3>Week 3</h3>
+      <h4>Object Methods: this</h4>
+      <ul>
+        <li>
+          <p>Why can the value of <b>this</b> change?</p>
+          <em><b>this</b> is defined at run-time. It has no value until a function is called.</em>
+        </li>
+      </ul>
+
+      <h4>Chapter 5: Objects</h4>
+      <ul>
+        <li>
+          <p>How can I check if a property or method exists on a JavaScript object?</p>
+          <ul>
+            <li>Use the in keyword: 'city' in superman</li>
+            <li>Use undefined: superman.city +== undefined</li>
+            <li>Use hasOwnProperty: superman.hasOwnProperty('city')</li>
+          </ul>
+        </li>
+        <li>
+          <p>How can I loop through the properties of a JavaScript object?</p>
+          <ul>
+            <li><em>for (const key in superman) {
+              console.log(key + ": " + superman[key]);
+            }</em></li>
+            <li><em>for (const value of Object.values(superman)) { console.log(value); }</em></li>
+            <li><em>for (const [key, value] of Object.entries(superman)) { console.log(`${key}: ${value}`); }</em></li>
+          </ul>
+        </li>
+        <li>
+          <p>How can I remove properties from a JavaScript object?</p>
+          <p><em>delete superman.fly</em></p>
+        </li>
+        <li>
+          <p>How can I convert a JSON string to a JavaScript object?</p>
+          <p><em>JSON.parse(batman)</em></p>
+        </li>
+        <li>
+          <p>How can I convert a JavaScript object to a JSON string?</p>
+          <ul>
+            <li><em>JSON.stringify(myObject)</em></li>
+            <li><em>JSON.stringify(wonderWoman, null, " "); // Add newline between key/value pairs</em></li>
+          </ul>
+        </li>
+        <li>
+          <p>Math constants</p>
+          <ul>
+            <li>PI - The ratio of the circumference and diameter of a circle.</li>
+            <li>SQRT2 - The square root of 2.</li>
+            <li>SQRT1_2 - The reciprocal of the square root of 2.</li>
+            <li>E - Euler's constant.</li>
+            <li>LN2 - The natural logarithm of 2.</li>
+            <li>LN10 - The natural logarithm of 10.</li>
+            <li>LOG2E - Log base 2 of Euler's constant.</li>
+            <li>LOG10E - Log base 10 of Euler's constant.</li>
+          </ul>
+        </li>
+        <li>
+          <p>Math methods</p>
+          <ul>
+            <li>abs() - Returns the absolute value of a number.</li>
+            <li>ceil() - Round a number up to the next integer.</li>
+            <li>floor() - Round a number down to the next integer.</li>
+            <li>round() - Round a number to the nearest integer.</li>
+            <li>trunc() - Return the integer-part of a number. ES6.</li>
+            <li>exp() - Raise a number to the power of Euler's constant.</li>
+            <li>pow() - Raise any number to the power of another number.</li>
+            <li>sqrt() - Return the positive square root of a number.</li>
+            <li>cbrt() - Returns the cube root of numbers. ES6.</li>
+            <li>hypot() - Returns the square root of the sum of the squares of all its arguments.</li>
+            <li>log() - Returns the natural logarithm of a number.</li>
+            <li>max() - Returns the maximum number from its arguments.</li>
+            <li>min() - Returns the minimum number from its arguments.</li>
+            <li>sin() - Returns the sine of an angle.</li>
+            <li>cos() - Returns the cosine of an angle.</li>
+            <li>tan() - Returns the tangent of an angle.</li>
+            <li>asin() - Returns the arcsine of a number.</li>
+            <li>acos() - Returns the accosine of a number.</li>
+            <li>atan() - Returns the arctangent of a number.</li>
+            <li>sinh(), cosh(), tanh(), asign(), acosh(), atanh() - Hyberbolic functions. ES6.</li>
+            <li>random() - Generate a number between 0 (inclusive) and 1 (exclusive).</li>
+          </ul>
+        </li>
+        <li>
+          <p>Date object constructors</p>
+          <ul>
+            <li>const today = new Date(); // Current date and time</li>
+            <li>const christmas = new Date('2022 12 25');</li>
+            <li>const chanukah = new Date('12 December 2022');</li>
+            <li>const eid = new Date('Sunday, Sune 25, 2022');</li>
+            <li>new Date(year, month, day, hour, minutes, seconds, milliseconds)</li>
+            <li>timestamp - The number of milliseconds since the Epoch (1st January 1970)</li>
+          </ul>
+        </li>
+        <li>
+          <p>Date object methods</p>
+          <ul>
+            <li>getDay() / getUTCDay() - Return anumber, starting at 0 for Sunday, up to 6 for Saturday.</li>
+            <li>getDate() / getUTCDate() - Return the day of the month, starting at 1.</li>
+            <li>getMonth() / getUTCMonth() - Return an integer starting from 0.</li>
+            <li>getFullYear() / getUTCFullYear() - Return the year.</li>
+            <li>getHours() / getUTCHours()</li>
+            <li>getMinutes() / getUTCMinutes()</li>
+            <li>getSeconds() / getUTCSeconds()</li>
+            <li>getMilliseconds() / getUTCMilliseconds()</li>
+            <li>getTime() - Returns a timestamp.</li>
+            <li>getTimezoneOffset() - Return the difference, in minutes, between local time and UTC.</li>
+            <li>setDate() - Set the day of the month, starting from 1.</li>
+            <li>setMonth() - Set the month, starting from 0.</li>
+            <li>setFullYear() - Set the year.</li>
+            <li>toString() - Used to view the date.</li>
+            <li>setHours() / setUTCHours()</li>
+            <li>setMinutes() / setUTCMinutes()</li>
+            <li>setSeconds() / setUTCSeconds()</li>
+            <li>setMilliseconds() / setUTCMilliseconds()</li>
+            <li>setTime() - Set to a specific timestamp.</li>
+          </ul>
+        </li>
+        <li>
+          <p>Creating regular expressions</p>
+          <ul>
+            <li>const pattern = /[a-zA-Z]+ing$/;</li>
+            <li>const pattern = new RegExp('[a-zA-Z]+ing')</li>
+          </ul>
+        </li>
+        <li>
+          <p>RegExp methods</p>
+          <ul>
+            <li>test() - Return true if it is a match.</li>
+            <li>exec() - Return an array containing the first match found or null if no matches were found.</li>
+          </ul>
+        </li>
+        <li>
+          <p>String regular expression methods</p>
+          <ul>
+            <li>split() - Return an array split by a given separator.</li>
+            <li>match() - Return an array of all the matches.</li>
+            <li>search() - Return the position of the first match.</li>
+            <li>replace() - Replaces any match with another string.</li>
+          </ul>
+        </li>
+      </ul>
+      <h4>Chapter 6: The Document Object Model</h4>
+      <ul>
+        <li>Chapter Exercise - <a href="heroes.html">heroes.html</a></li>
+        <li>
+          <p>What is the DOM?</p>
+          <p><em>It is a representation of the HTML document as a network of connected nodes.</em></p>
+        </li>
+      </ul>
+      <ul>
+        <p>Node types</p>
+        <ul>
+          <li>1 - element</li>
+          <li>2 - attribute</li>
+          <li>3 - text</li>
+          <li>8 - comment</li>
+          <li>9 - body</li>
+        </ul>
+      </ul>
+      <ul>
+        <p>Properties and methods for nodes</p>
+        <ul>
+          <li>nodeType - Return an integer containing its type.</li>
+          <li>nodeName - Return the name of an element.</li>
+          <li>Document.body - Return the body element.</li>
+          <li>Document.images - Return a node list of all the images.</li>
+          <li>Document.links - Return a node list of all the a and area elements that have an href attribute.</a></li>
+          <li>Document.anchors - Return a node list of all the a elements that have a name attribute.</li>
+          <li>Document.forms - Return a node list of all the forms.</li>
+          <li>getElementById() - Return a reference to the element with a unique id attribute.</li>
+          <li>getElementsByTagName() - Return a live node list of elements with the tag name that is provided.</li>
+          <li>getElementsByClassName() - Return a live node list of elements that have the provided class name.</li>
+          <li>querySelector() - Return the first element in a document that matches the CSS selector.</li>
+          <li>querySelectorAll() - Return a node list of all elements in a document that match the CSS selector.</li>
+          <li>childNodes - Return a list of all the child nodes of the selected node.</li>
+          <li>children - Return a list of the child nodes of the selected node that are elements.</li>
+          <li>firstChild - Return the first child of a node.</li>
+          <li>lastChild - Returns the last child of a node.</li>
+          <li>parentNode - Return the parent node of an element.</li>
+          <li>nextSibling - Return the next adjacent node of the same parent.</li>
+          <li>previousSibling - Return the previous adjacent node.</li>
+          <li>nodeValue - Return the value of a text node.</li>
+          <li>textContent - Return the text content of an element as a string.</li>
+          <li>getAttribute() - Return the value of the attribute provides.</li>
+          <li>setAttribute() - Change the value of an element's attribute.</li>
+          <li>className - Get/set the classes of an element directly.</li>
+          <li>classList - Add/remove individual classes to/from an element. classList.add(), classList.remove(), classList.contains()</li>
+          <li>createElement() - Create a new element.</li>
+          <li>createTextNode() - Create a new text node.</li>
+          <li>appendChild() - Add another node as a child node.</li>
+          <li>insertBefore() - Insert a child element at a specific position.</li>
+          <li>removeChild() - Remove a child element.</li>
+          <li>replaceChild() - Replace a child element with another.</li>
+          <li>innerHTML - Return all the child elements as a string of HTML.</li>
+          <li>style - Set camelCase style properties.</li>
+          <li>getComputedStyle() - Return all the style information of an element.</li>
+        </ul>
+      </ul>
+
+      <h4>Chapter 7: Events</h4>
+      <ul>
+        <li>Chapter Exercise - <a href="events.html">events.html</a></li>
+        <li>
+          <p>How do I connect event handlers?</p>
+          <ul>
+            <li><em>Inline (not ideal) - &lt;p onclick=&quot;console.log('You Clicked Me!')&quot;&gt;Click Me&lt;/p&gt;</em></li>
+            <li><em>Older (better) - document.onclick = function (){ console.log('You clicked on the page!'); }</em></li>
+            <li><em>Event Listeners (best) - document.body.addEventListener('click',doSomething);</em></li>
+          </ul>
+        </li>
+        <li>
+          <p>Types of Events</p>
+          <ul>
+            <li>click - Occurs when a mouse button is clicked.</li>
+            <li>mousedown - Occurs when the mouse button is pressed down.</li>
+            <li>mouseup - Occurs when the mouse button is released.</li>
+            <li>dblclick - Occurs when the mouse buttin is clicked twice.</li>
+            <li>mouseover - Occurs when the pointer is placed over an element.</li>
+            <li>mouseout - Occurs when the mouse moves away from an element.</li>
+            <li>mousemove - Occurs when the mouse moves over the top of an element.</li>
+            <li>keydown - Occurs when the user pressed down a keyboard key. Includes modifier key information: shiftKey, ctrlKey, altKey, metaKey</li>
+            <li>keypress - Occurs after a keydown but before a keyup event.</li>
+            <li>keyup - Occurs when a key is released.</li>
+            <li>touchstart - Occurs when the user begins to touch the screen.</li>
+            <li>touchend - Occurs when the user stops touching the surface.</li>
+            <li>touchmove - Occurs after the user touches the screen and moves around without leaving.</li>
+            <li>touchenter - Occurs when the user is already touching the screen and passes over an element.</li>
+            <li>touchleave - Occurs when the user is still touching the surface but leaves an element.</li>
+            <li>touchcancel - Occurs when a touch event is interrupted.</li>
+          </ul>
+        </li>
+        <li>
+          <p>How do I remove an event listener?</p>
+          <p><em>removeEventListener()</em></p>
+        </li>
+      </ul>
+    </main>
+  </body>
+</html>
