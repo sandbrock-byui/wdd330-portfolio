@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WDD330 | Week 4 Notes | Brandon Rock</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+  <body>
+    <header>
+      <h1>WDD330 Portfolio - Week 4 Notes</h1>
+      <h2>By Brandon Rock</h2>
+    </header>
+    <main>
+      <h3>Week 4</h3>
+      <h4>Chapter 8: Forms</h4>
+      <ul>
+        <li><a href="search.html">Search example</a></li>
+        <li><a href="hero.html">Hero example</a></li>
+        <li>
+          <p>Accessing form from JavaScript</p>
+          <ul>
+            <li><em>const form = document.forms[0];</em></li>
+            <li>
+              <em>const form = document.getElementsByTagname('form')[0];</em>
+            </li>
+            <li><em>const form = document.forms.search;</em></li>
+            <li><em>const form = document.forms['search'];</em></li>
+          </ul>
+        </li>
+        <li>
+          <p>Accessing form elements from JavaScrip</p>
+          <ul>
+            <li><em>const [input,button] = form.elements;</em></li>
+            <li><em>const input = form.searchInput</em></li>
+            <li><em>const input = form['searchInput']</em></li>
+          </ul>
+        </li>
+        <li>
+          <p>Form properties and methods</p>
+          <ul>
+            <li>submit() - Method that submits the form automatically.</li>
+            <li>
+              reset() - Method that resets all form controls to their initial
+              values specified in the HTML.
+            </li>
+            <li>
+              action - Property that specifies the URL to submit the form to.
+            </li>
+            <li>
+              method - Property that specifies the HTTP method to use when
+              submitting the form. If GET is used, the form values will be URL
+              parameters.
+            </li>
+            <li>focus - Event that occurs when an element is focused on.</li>
+            <li>blur - Event that occurs when an element loses focus.</li>
+            <li>
+              changed - Event that occurs when an element loses focus and its
+              value has been changed.
+            </li>
+            <li>submit - Event that occurs when a form is submitted.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Chapter 12: Object-Oriented Programming in JavaScript</h4>
+      <ul>
+        <li>
+          <p>Three main concepts</p>
+          <ul>
+            <li>
+              Encapsulation - Keep the programming logic inside an object nad
+              make methods available to implement the functionality, without the
+              outside world needing to know how it's done.
+            </li>
+            <li>
+              Polymorphism - Various objects share the same method, but also
+              have the ability to override shared methods with a more specific
+              implementation.
+            </li>
+            <li>
+              Inheritance - Take an object that already exists and inherit all
+              its properties and methods.
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <p>Constructor function sample</p>
+          <p>
+            <em
+              >const dice = { sides: 6, roll() { return Math.floor(this.sides *
+              Math.random() + 1) } }</em
+            >
+          </p>
+        </li>
+
+        <li>
+          <p>Class sample</p>
+          <p>
+            <em
+              >class Turtle { constructor(name) { this.name = name; this.weapon
+              = 'hands'; } sayHi() { return `Hi dude, my name is ${this.name}`;
+              } attack(){ return `Feel the power of my ${this.weapon}!`; } }</em
+            >
+          </p>
+        </li>
+
+        <li>
+          <p>Accessing prototype</p>
+          <ul>
+            <li>raph.constructor.prototype</li>
+            <li>Object.getPrototypeOf(raph)</li>
+            <li>raph.__proto__</li>
+          </ul>
+        </li>
+
+        <li>
+          The prototype object is live, so if a new property or method is added
+          to the prototype, any instances of its class will inherit the new
+          properties and methods automatically.
+        </li>
+
+        <li>
+          An object instance can overwrite any properties or methods inherited
+          from its prototype by simply assigning a new value to them.
+        </li>
+
+        <li>Objects can be inherited by using the <em>extends</em> keyword.</li>
+
+        <li>
+          <p>Property attributes an descriptors</p>
+          <ul>
+            <li>
+              value - The value of the property and is <em>undefined</em> by
+              default.
+            </li>
+            <li>
+              writable - This boolean value shows whether a property can be
+              changed or not, and is false by default.
+            </li>
+            <li>
+              enumerable - This boolean value shows whether a property will show
+              up when th eobject is displayed in a for in loop, and is false by
+              default.
+            </li>
+            <li>
+              configurable - This boolean value shows whether you can delete a
+              property or change any of its attributes, and is false by default.
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <p>Property methods</p>
+          <ul>
+            <li>
+              propertyIsEnumerable() - Return true for user-created properties
+              and methods.
+            </li>
+            <li>
+              hasOwnProperty() - Return true for properties that belong directly
+              to an object.
+            </li>
+            <li>
+              getOwnPropertyDescriptor() - Return an object of property
+              descriptors.
+            </li>
+            <li>
+              Object.defineProperty() - Define a new property along with
+              property descriptor values.
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          Object.create() - Create object using other object as prototype.
+        </li>
+        <li>
+          <p>Mixins</p>
+          <ul>
+            <li>
+              Mixin - A way of adding properties and methods of some object to
+              another object without using inheritance.
+            </li>
+            <li>
+              Object.assign() - Method that provides basic mixin functionality.
+              Shallow copy only.
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Chapter 15: Modern JavaScript Development</h4>
+      <ul>
+        <li><a href="mvc/list.html">MVC Example</a></li>
+        <li>
+          Libraries - A piece of code that provides several methods that make it
+          eaiser to achive common tasks.
+        </li>
+        <li>
+          <p>Common libraries</p>
+          <ul>
+            <li>jQuery - Easy DOM manipulation.</li>
+            <li>
+              Underscore and Lodash - Functional style programming libraries.
+              Lodash is a superset of Underscore.
+            </li>
+            <li>
+              List of libraries -
+              https://en.wikipedia.org/wiki/List_of_JavaScript_libraries
+            </li>
+            <li>List of small libraries - http://microjs.com/</li>
+          </ul>
+        </li>
+
+        <li>
+          Modules - Self-contained piece of code that provides functions and
+          methods to be used by other files and modules.
+        </li>
+      </ul>
+    </main>
+  </body>
+</html>
