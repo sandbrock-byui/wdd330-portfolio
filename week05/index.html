@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WDD330 | Week 5 Notes | Brandon Rock</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+  <body>
+    <header>
+      <h1>WDD330 Portfolio - Week 5 Notes</h1>
+      <h2>By Brandon Rock</h2>
+    </header>
+    <main>
+      <h3>Week 5</h3>
+      <h4>Chapter 10: Testing and Debugging</h4>
+      <ul>
+        <li>
+          <p>What are the types of errors in a program?</p>
+          <ul>
+            <li>
+              System error - there’s a problem with the system or external
+              devices with which the program is interacting.
+            </li>
+            <li>
+              Programmer error ― the program contains incorrect syntax or faulty
+              logic; it could even be as simple as a typo.
+            </li>
+            <li>
+              User error ― the user has entered data incorrectly, which the
+              program is unable to handle.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>How can I use a stack trace?</p>
+          <p>
+            <em
+              >After pausing the code execution at a breakpoint, I can then
+              navigate through the hierarchy of functions and methods that were
+              called leading up to that point.</em
+            >
+          </p>
+        </li>
+        <li>
+          <p>What is a warning?</p>
+          <p>
+            <em
+              >A warning indicates a possible problem that is not severe enough
+              to stop the program from running.</em
+            >
+          </p>
+        </li>
+        <li>
+          <p>How can I debug in a web browser?</p>
+          <ul>
+            <li>
+              <em
+                >alert() - Use the alert function to pause execution and display
+                values.</em
+              >
+            </li>
+            <li><em>console.log() - Print text to the console.</em></li>
+            <li>
+              <em>console.trace() - Print a stack trace to the console.</em>
+            </li>
+            <li>
+              <em
+                >debugger keyword - debugger will cause the code to break when
+                it is encountered.</em
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Error Objects</p>
+          <ul>
+            <li>
+              EvalError - Deprecated. Used to identify errors in the eval()
+              function.
+            </li>
+            <li>
+              RangeError - Thrown when a number is outside an allowable range of
+              values.
+            </li>
+            <li>
+              ReferenceError - Thrown when a reference is made to an item that
+              does not exist.
+            </li>
+            <li>
+              SyntaxError - Thrown when there's an error in the code's syntax.
+            </li>
+            <li>
+              TypeError - Thrown when there's an error in the type of value
+              used.
+            </li>
+            <li>
+              URIError - Thrown when there's a problem encoding or deocidng the
+              URI.
+            </li>
+            <li>
+              InternalError - Non-standard error that is thrown when an error
+              occurs in the JavaScript engine.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Common error object properties (Safe across browsers)</p>
+          <ul>
+            <li>name - Returns the name of the error contructor function.</li>
+            <li>
+              message - Returns a description of the error and should be
+              provided as an argument to the Error constructor function.
+            </li>
+            <li>stack - Return a stack trace for the error.</li>
+          </ul>
+        </li>
+        <li>jest - A TDD framework.</li>
+      </ul>
+    </main>
+  </body>
+</html>
