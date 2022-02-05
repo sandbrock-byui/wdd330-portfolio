@@ -1,0 +1,42 @@
+.header {
+  text-align: center;
+}
+
+.content-wrapper {
+  margin: 0 auto;
+  max-width: 930px;
+}
+
+.todos--item {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  border: 1px solid black;
+  padding: 0.3rem;
+  gap: 10px;
+}
+
+.todos--item--title {
+  flex: 1 1 auto;
+  flex-basis: 100%;
+}
+
+.todos--item--button {
+  flex: 0 0 1.5rem;
+}
+
+.add-item-form {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5rem;
+}
+
+.add-item-form > input {
+  flex: 1 1 auto;
+  padding: 0.5rem;
+}
+
+.add-item-form > button {
+  flex: 0 0 2rem;
+  margin-left: 0.25rem;
+}
