@@ -1,28 +1,18 @@
-const items = [
-  {
-    id: '1',
-    content: 'Morning prayer',
-    completed: true
-  },
-  {
-    id: '2',
-    content: 'Todo styles',
-    completed: false
-  },
-  {
-    id: '3',
-    content: 'Performance review',
-    completed: false
-  }
-];
-
 export default class TodoModel {
+  _items = [];
+
   constructor() {
-    this.idCounter = 4;
+    this._loadItems();
+    this.idCounter = this._items.length + 1;
   }
 
-  getTodos() {
-    return items;
+  getTodos(filter) {
+    if (filter === 'all') {
+      return this._items.filter((i) => true);
+    } else if (filter === 'active') {
+      return this._items.filter((i) => !i.completed);
+    }
+    return this._items.filter((i) => i.completed);
   }
 
   addTodo(items, content) {
@@ -31,18 +21,42 @@ export default class TodoModel {
       content: content,
       completed: false
     };
+    this._items.push(item);
+    this._saveItems();
+
     items.push(item);
+
     return item;
   }
 
   deleteTodo(items, item) {
-    const itemIdx = items.findIndex((foundItem) => foundItem.id === item.id);
+    // delete from the DB
+    let itemIdx = this._items.findIndex(
+      (foundItem) => foundItem.id === item.id
+    );
+    if (itemIdx >= 0) {
+      this._items.splice(itemIdx, 1);
+      this._saveItems();
+    }
+
+    // delete from the clone
+    itemIdx = items.findIndex((foundItem) => foundItem.id === item.id);
     if (itemIdx >= 0) {
       items.splice(itemIdx, 1);
     }
   }
 
-  saveTodos(items) {
-    this.items = items;
+  _loadItems() {
+    const items = JSON.parse(localStorage.getItem('todo-items'));
+    console.log('items', items);
+    if (items) {
+      this._items = items;
+    }
+    return items;
+  }
+
+  _saveItems() {
+    console.log(this._items);
+    localStorage.setItem('todo-items', JSON.stringify(this._items));
   }
 }

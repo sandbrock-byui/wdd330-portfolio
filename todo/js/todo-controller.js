@@ -1,5 +1,6 @@
 export default class TodoController {
   _items = [];
+  _filter = 'all';
 
   constructor(model, view) {
     this._model = model;
@@ -7,35 +8,46 @@ export default class TodoController {
   }
 
   listenAdd() {
-    this._view.listenAdd({
-      addClicked: this._addClicked.bind(this),
-      completedClicked: this._completedClicked.bind(this),
-      deleteClicked: this._deleteClicked.bind(this)
-    });
+    if (!this._items) {
+      throw new Error('Call renderList() before listenAdd()');
+    }
+
+    this._view.listenAdd({ addClicked: this._addClicked.bind(this) });
   }
 
   renderList() {
-    this._items = this._model.getTodos();
+    this._items = this._model.getTodos(this._filter);
     this._view.renderList({
       items: this._items,
+      filter: this._filter,
       completedClicked: this._completedClicked.bind(this),
-      deleteClicked: this._deleteClicked.bind(this)
+      deleteClicked: this._deleteClicked.bind(this),
+      filterClicked: this._filterClicked.bind(this)
     });
   }
 
   _addClicked(content) {
     const item = this._model.addTodo(this._items, content);
-    this._model.saveTodos(this._items);
-    return item;
+    return {
+      item: item,
+      items: this._items,
+      filter: this._filter,
+      completedClicked: this._completedClicked.bind(this),
+      deleteClicked: this._deleteClicked.bind(this),
+      filterClicked: this._filterClicked.bind(this)
+    };
   }
 
   _completedClicked(event) {
     event.item.completed = !event.item.completed;
-    this._model.saveTodos(this._items);
   }
 
   _deleteClicked(event) {
     this._model.deleteTodo(this._items, event.item);
-    this._model.saveTodos(this._items);
+  }
+
+  _filterClicked(event) {
+    this._filter = event.filter;
+    this.renderList();
   }
 }

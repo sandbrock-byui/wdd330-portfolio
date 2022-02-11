@@ -9,5 +9,5 @@ const view = new TodoView({
   listSelector: '#todos'
 });
 const controller = new TodoController(model, view);
-controller.listenAdd();
 controller.renderList();
+controller.listenAdd();
