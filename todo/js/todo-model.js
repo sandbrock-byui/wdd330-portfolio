@@ -29,6 +29,12 @@ export default class TodoModel {
     return item;
   }
 
+  updateTodo(item) {
+    const persistentItem = this._items.find((i) => i.id === item.id);
+    persistentItem.completed = item.completed;
+    this._saveItems();
+  }
+
   deleteTodo(items, item) {
     // delete from the DB
     let itemIdx = this._items.findIndex(
@@ -47,7 +53,7 @@ export default class TodoModel {
   }
 
   _loadItems() {
-    const items = JSON.parse(localStorage.getItem('todo-items'));
+    const items = JSON.parse(localStorage.getItem('toDoList'));
     console.log('items', items);
     if (items) {
       this._items = items;
@@ -57,6 +63,6 @@ export default class TodoModel {
 
   _saveItems() {
     console.log(this._items);
-    localStorage.setItem('todo-items', JSON.stringify(this._items));
+    localStorage.setItem('toDoList', JSON.stringify(this._items));
   }
 }

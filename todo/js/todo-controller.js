@@ -39,7 +39,9 @@ export default class TodoController {
   }
 
   _completedClicked(event) {
+    console.log('event', event);
     event.item.completed = !event.item.completed;
+    this._model.updateTodo(event.item);
   }
 
   _deleteClicked(event) {
