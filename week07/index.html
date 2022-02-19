@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WDD330 | Week 7 Notes | Brandon Rock</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+  <body>
+    <header>
+      <h1>WDD330 Portfolio - Week 7 Notes</h1>
+      <h2>By Brandon Rock</h2>
+    </header>
+    <main>
+      <h3>Week 7</h3>
+      <h4>Chapter 11: Further Functions</h4>
+      <ul>
+        <li>
+          <p>How can I determine how many arguments are in a function that I want to invoke?</p>
+          <p><em>Access the length property of the function. For example, </em><code>myFunc.length</code>.</p>
+        </li>
+        <li>
+          <p>Why would I choose to use <code>apply</code> instead of <code>call</code>?</p>
+          <p><em>Since apply accepts an array of arguments, it can be invoked dynamically, without knowing the # of arguments ahead of time.</em></p>
+        </li>
+        <li>
+          <p>What is <em>memoization?</em></p>
+          <p><em>Memoization is when a function saves time by caching the results of expensive operations.</em></p>
+        </li>
+        <li>
+          <p>When would it be useful for a function to redefine itself?</p>
+          <p><em>Functions can redefine themselves when they need to do some early initialization. This is called the Lazy Definition Pattern.</em></p>
+        </li>
+        <li>
+          <p>Callback Hell</p>
+          <p>The term used to describe when more than one callback is used in the same function.</p>
+        </li>
+        <li>
+          <p>Promise Lifecycle</p>
+          <ul>
+            <li>pending - The state right after an asynchornous operation is called. It remains in this state while the operation is taking place.</li>
+            <li>unsettled - A promise is unsettled before the asynchonous operation completes.</li>
+            <li>settled - A promise is settled after the asynchornous operation completes.</li>
+            <li>resolved - The asynchronous operation was completed successfully.</li>
+            <li>rejected - The asynchronous operation was not completed successfully.</li>
+          </ul>
+        </li>
+        <li>
+          <p>What is a closure?</p>
+          <p><em>When a function returns a nested function that references variables defined in the outer function.</em></p>
+        </li>
+        <li>
+          <p>What is a generator?</p>
+          <p><em>A generator is a function that runs in an infinite loop and yields the results of each iteration. It can be recognized by the asterisk after the "function" keyword.</em></p>
+        </li>
+        <li>
+          <p>Pure Function Rules</p>
+          <ol>
+            <li>The return value of a pure function should only depend on the values provided as arguments. It doesn't rely on values from somewhere else in the program.</li>
+            <li>There are no side-effects. A pure function doesn't change any values or data elsewhere in the program. It only makes non-destructive data transformations and returns new values, rather than altering any of the underlying data.</li>
+            <li>Referential transparency. Given the same arguments, a pure function will always return the same result.</li>
+          </ol>
+        </li>
+        <li>
+          <p>Higher-Order Functions</p>
+          <p>Higher-order functions are functions that accept another function as an argument, or return another function as a result, or both.</p>
+        </li>
+        <li>
+          <p>Currying</p>
+          <p>A process that involves the partial application of functions.</p>
+        </li>
+      </ul>
+
+      <h4>Chapter 13: AJAX</h4>
+      <ul>
+        <li>
+          <p>AJAX</p>
+          <ul>
+            <li>Asynchronous - When a request for data is sent, the program doesn’t have to stop and wait for the response. It can carry on running, waiting for an event to fire when a response is received. By using callbacks to manage this, programs are able to run in an efficient way, avoiding lag as data is transferred back and forth.</li>
+            <li>JavaScript - JavaScript was always considered a 'front-end' language, not used to communicate with the server. Ajax enabled JavaScript to send requests and receive responses from a server, allowing content to be updated in real time.</li>
+            <li>XML - When the term Ajax was originally coined, XML documents were often used to return data.</li>
+          </ul>
+        </li>
+        <li>
+          <p>How is AJAX handled nowadays?</p>
+          <p><em>The Fetch API is the new standard for sending/receiving data to/from the server using JavaScript.</em></p>
+        </li>
+        <li>
+          <p>Fetch API</p>
+          <p>Request Properties - method, mode, redirect, cache</p>
+        </li>
+        <li>
+          <p>Headers</p>
+          <p>const headers = new Headers({ 'Content-Type': 'text/plain' });</p>
+        </li>
+        <li>
+          <p>FormData</p>
+          <p>const data = new FormData();</p>
+        </li>
+      </ul>
+    </main>
+  </body>
+</html>          
