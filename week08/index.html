@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WDD330 | Week 8 Notes | Brandon Rock</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+  <body>
+    <header>
+      <h1>WDD330 Portfolio - Week 8 Notes</h1>
+      <h2>By Brandon Rock</h2>
+    </header>
+    <main>
+      <h3>Week 8</h3>
+
+      <h4>Chatper 8: CSS3 Transforms and Transitions</h4>
+      <ul>
+        <li>Transforms - Lets you translate, rotate, scale, and/or skew elements.</li>
+        <ul>
+          <li>
+            <p>What is a <strong>translation</strong> in CSS?</p>
+            <p><em>Translation functions allow you to move elements vertically and/or horizontally.</em></p>
+          </li>
+          <li>
+            <p>What is <strong>scaling</strong> in CSS?</p>
+            <p><em>Scales an element horizontally then vertically.</em></p>
+          </li>
+          <li>
+            <p>What is a <strong>rotation</strong> in CSS?</p>
+            <p><em>It rotates an element around the point of origin by a specified angle value.</em></p>
+          </li>
+          <li>
+            <p>What is a <strong>skew</strong> in CSS?</p>
+            <p><em>Skews an element around the X and Y axis.</em></p>
+          </li>
+        </ul>
+        <li>Transitions - Animation by gradual CSS changes</li>
+        <ul>
+          <li>
+            <p>transition-property</p>
+            <p><em>Defines the CSS properties of the element that should be transitioned.</em></p>
+          </li>
+          <li>
+            <p>transition-duration</p>
+            <p><em>Sets how long the transition will take. 200ms is considered the optimum time.</em></p>
+          </li>
+          <li>
+            <p>transition-timing-function</p>
+            <p><em>Lets you control the pace of the transition in even more granular detail. The most common timing functions include <strong>ease, linear, ease-in, ease-out, ease-in-out, cubic-bezier.</strong></em></p>
+          </li>
+          <li>
+            <p>transition-delay</p>
+            <p><em>Introduce a delay before the transition begins.</em></p>
+          </li>
+        </ul>
+        <li>Animations - Controlled with keyframes. Need -webkit- prefix.</li>
+        <ul>
+          <li>keyframes - @keyframes moveRight { from { ... } to { ... } }</li>
+          <li>animation-name - The name of the animation.</li>
+          <li>animation-duration - Defines the length of time (in seconds or milliseconds) to complete on iteration.</li>
+          <li>animation-timing-function - Determines how the animation will progress over its duration.</li>
+          <li>animation-iteration-count - Lets you define how many times the animation will play.</li>
+          <li>animation-direction - Change the direction the animation moves.</li>
+          <li>animation-delay - Define how many milliseconds or seconds to wait before starting the animation.</li>
+          <li>animation-fill-mode - Defines what happens before the first animation iteration begins and after the last animation iteration concludes.</li>
+        </ul>
+      </ul>
+
+      <h4>Chapter 12: Canvas, SVG, and Drag and Drop</h4>
+      <ul>
+        <li>
+          <p>Canvas</p>
+          <ul>
+            <li>
+              <p>What is the default canvas width and height?</p>
+              <p><em>The default width is 300 and the defualt height is 150.</em></p>
+            </li>
+            <li>
+              <p>How do I draw on a canvas?</p>
+              <p><em>You must draw using JavaScript.</em></p>
+            </li>
+            <li>
+              <p>How do I initialize canvas?</p>
+              <p><code>var canvas = document.getElementById("myCanvas");</code></p>
+              <p><code>var context = canvas.getContext("2d");</code></p>
+            </li>
+            <li>
+              <p>Drawing a rectangle with a red border and a blue fill.</p>
+              <p><code>context.strokeStyle = "red";</code></p>
+              <p><code>context.fillStyle = "blue";</code></p>
+              <p><code>context.fillRect(10, 10, 100, 100); </code></p>
+              <p><code>context.strokeRect(10, 10, 100, 100);</code></p>
+            </li>
+            <li>
+              <p>Drawing an image repeatedly.</p>
+              <p><code>var img = new Image();</code></p>
+              <p><code>img.src = "../images/bg-bike.png";</code></p>
+              <p><code>img.onload = function() {</code></p>
+              <p><code>var pattern = context.createPattern(img, "repeat");</code></p>
+              <p><code>context.fillStyle = pattern;</code></p>
+              <p><code>context.fillRect(10, 10, 100, 100);</code></p>
+              <p><code>context.strokeRect(10, 10, 100, 100);</code></p>
+              <p><code>};</code></p>
+              <p><code>}</code></p>
+            </li>
+            <li>
+              <p>How do I create a gradient?</p>
+              <p><em>Use the createLinearGradient() or createRadialGradient() methods.</em></p>
+            </li>
+            <li>
+              <p>How do I draw a circle?</p>
+              <p><code>...</code></p>
+              <p><code>context.beginPath();</code></p>
+              <p><code>context.arc(50, 50, 30, 0, Math.PI*2, true);</code></p>
+              <p><code>context.closePath();</code></p>
+              <p><code>context.strokeStyle = "red";</code></p>
+              <p><code>context.fillStyle = "blue";</code></p>
+              <p><code>context.lineWidth = 3;</code></p>
+              <p><code>context.fill();</code></p>
+              <p><code>context.stroke();</code></p>
+            </li>
+            <li>
+              <p>Save canvas to an image</p>
+              <p><em>window.open(canvas.toDataURL("image/png")</em></p>
+            </li>
+            <li>
+              <p>Draw image to canvas</p>
+              <p><code>var canvas = document.getElementById("demo6");</code></p>
+              <p><code>var context = canvas.getContext("2d");</code></p>
+              <p><code>var image = document.getElementById("myImageElem");</code></p>
+              <p><code>context.drawImage(image, 0, 0);</code></p>
+            </li>
+            <li>
+              <p>Edit an image</p>
+              <p><em>getImageData()</em></p>
+            </li>
+          </ul>
+        </li>
+        <li>SVG</li>
+        <ul>
+          <li>
+            <p>Drawing a cirlce</p>
+            <p><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"&gt;</svg></code></p>
+            <p><code>&lt;circle cx="50" cy="50" r="25" fill="red"/&gt;</code></p>
+            <p><code>&lt;/svg&gt;</code></p>
+          </li>
+          <li>
+            <p>Drawing a rectangle</p>
+            <p><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 400 400"&gt;</svg></code></p>
+            <p><code>&lt;rect x="10" y="10" width="100" height="100" fill="blue" stroke="red" stroke-width="3"/&gt;</code></p>
+            <p><code>&lt;/svg></code&gt;</p>
+          </li>
+          <li>
+            <p>Creating an SVG image</p>
+            <p><a href="http://inkscape.org/">Inkscape</a> - Used for creating SVG images.</p>
+            <p>raphaeljs.com - JavaScript library for working with SVG images.</p>
+          </li>
+        </ul>
+
+        <li>Drag and Drop</li>
+        <ol>
+          <li>Set the <em>draggable</em> attribute on any HTML elements you’d like to be draggable.</li>
+          <li>Add an event listener for the <em>dragstart</em> event on any draggable HTML elements.</li>
+          <li>Add an event listener for the <em>dragover</em> and drop events on any elements that you want to have accept dropped items.</li>
+        </ol>
+      </ul>
+    </main>
+  </body>
+</html>      
