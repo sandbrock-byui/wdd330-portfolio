@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WDD330 | Week 9 Notes | Brandon Rock</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+  <body>
+    <header>
+      <h1>WDD330 Portfolio - Week 9 Notes</h1>
+      <h2>By Brandon Rock</h2>
+    </header>
+    <main>
+      <h3>Week 9</h3>
+
+      <h4>Chapter 9: The Window Object</h4>
+      <ul>
+        <li>
+          <p>What is the BOM - Browser Object Model?</p>
+          <p><em>A collection of properties and methods that contain information about the browser and computer screen.</em></p>
+        </li>
+        <li>
+          <p>Dialogs</p>
+          <ul>
+            <li>alert() - Shows a message and returns undefined.</li>
+            <li>confirm() - Shows a message with OK/Cancel and returns true or false.</li>
+            <li>prompt() - Shows an input box and returns the string value or null.</li>
+          </ul>
+        </li>
+        <li>
+          <p>How do I tell what browser the application is runnin gin?</p>
+          <p><code>window.navigator.userAgent</code></p>
+        </li>
+        <li>
+          window.location properties and methods
+          <ul>
+            <li><code>window.location.href</code> - Gets the URL of the current page</li>
+            <li><code>window.location.protocol</code> - Gets the protocol of the current page (http, https, pop2, ftp)</li>
+            <li><code>window.location.hostname</code> - Gets the hostname of the current page (www.sitepoint.com)</li>
+            <li><code>window.location.port</code> - Gets the port of the current page (This will be blank if not specified in the URL)</li>
+            <li><code>window.location.pathname</code> - Gets the path of the current page (/premium/books/javascript-novice-to-ninja)</li>
+            <li><code>window.location.search</code> - Gets the query string (?q=javascript&limit=24)</li>
+            <li><code>window.location.hash</code> - Gets the fragment identifier of the current page (#test)</li>
+            <li><code>window.location.origin</code> - Gets the origin of the current page (protocol + domain)</li>
+            <li><code>window.location.reload()</code> - Reload the page. If true is passed in as a parameter, it will force reload from the server.</li>
+            <li><code>window.location.assign()</code> - Load another resource from a URL.</li>
+            <li><code>window.location.replace()</code> - Similar to assign() but it does not store the current page in the session history.</li>
+            <li><code>window.location.toString()</code> - Returns a string containing the whole URL.</li>
+          </ul>
+        </li>
+        <li>
+          window.history properties and methods
+          <ul>
+            <li><code>window.history.length</code> - Shows how many pages have been visited before arriving at the current page.</li>
+            <li><code>window.history.go()</code> - Method can be used to go to a specific page. 1 = forward, 0 = current, -1 = back</li>
+            <li><code>window.history.forward()</code> - Navigates forward.</li>
+            <li><code>window.history.back()</code> - Navigates back.</li>
+          </ul>
+        </li>
+        <li>
+          window properties and methods
+          <ul>
+            <li><code>window.open()</code> - Opens a new window to the specified URL.</li>
+            <li><code>windowref.close()</code> - Closes the referenced window.</li>
+            <li><code>window.moveTo(0,0)</code> - Moves the window to the top-left corner.</li>
+            <li><code>window.resizeTo(600,400)</code> - Resizes the window to the specified width and height.</li>
+          </ul>
+        </li>
+        <li>
+          window.screen properties and methods
+          <ul>
+            <li><code>window.screen.height</code> - Returns the screen height in pixels.</li>
+            <li><code>window.screen.width</code> - Returns the screen width in pixels.</li>
+            <li><code>window.screen.availHeight</code> - Returns the screen height, excluding any menus.</li>
+            <li><code>window.screen.availWidth</code> - Returns the screen width, excluding any menus.</li>
+            <li><code>window.screen.colorDepth</code> - Returns the color bit depth of the user's monitor.</li>
+          </ul>
+        </li>
+        <li><code>document.write('')</code> - Writes a string of text to the page.</li>
+        <li>
+          cookies
+          <ul>
+            <li>How do I set a cookie? - <code>document.cookie = 'hero=true'</code></li>
+            <li>How do I read a cookie? - <code>document.cookie.split("; ")</code></li>
+            <li>How do I set a cookie's expiration? - <code>`expires=${ expiryDate.toUTCString() }`</code> or <code>'name=Batman; max-age=86400'</code></li>
+            <li>How do I set the path of a cookie? - <code>'path=/'</code></li>
+            <li>How do I set the domain of a cookie? - <code>'domain=sitepoint.com'</code></li>
+            <li>How do I ensure a cookie will only be sent over HTTPS? - <code>'secure'</code></li>
+            <li>How do I delete a cookie? Set it to expire at a time in the past. Session cookies will expire when a tab or window is closed.</li>
+          </ul>
+        </li>
+        <li>
+          timing functions
+          <ul>
+            <li><code>window.setTimeout(func, int)</code> - Accepts a callback to a function as its first parameter and a number of milliseconds as its second.</li>
+            <li><code>window.clearTimeout(int)</code> - Cancels the timeout that returned the integer parameter.</li>
+            <li><code>window.setInterval(func, int)</code> - Repeatedly calls the callback after every given number of milliseconds.</li>
+            <li><code>window.clearInterval(int)</code> - Cancels the interval that reutrned the integer parameter.</li>
+          </ul>
+        </li>
+        <li><code>window.requestAnimationFrame</code> - Similar to window.setInterval except it uses better graphics-handling and it doesn't run when the tab is inactive.</li>
+      </ul>
+
+      <h4>Chapter 14: HTML5 APIs</h4>
+      <ul>
+        <li>
+          <p>What is the <em>data-</em> attribute used for?</p>
+          <p><em>It is used for embedding custom attributes that are ignored by the browser.</em></p>
+        </li>
+        <li>
+          <p>How do I get the value of a <em>data-</em> attribute?</p>
+          <p><em>Either <code>element.dataset.name</code> or <code>element.getAttribute('data-name')</code></em></p>
+        </li>
+        <li>
+          web storage - <code>window.localStorage</code>
+          <ul>
+            <li>
+              <p>How do I save data to localStorage?</p>
+              <p><code>localStorage.setItem('name', 'value');</code> or <code>localStorage.name = 'value';</code></p>
+            </li>
+            <li>
+              <p>How do I load data from localStorage?</p>
+              <p><code>const val = localStorage.getItem('name');</code> or <code>const val = localStorage.name;</code></p>
+            </li>
+            <li>
+              <p>How do I remove a value from localStorage?</p>
+              <p><code>localStorage.removeItem('name');</code> or <code>delete localStorage.name;</code></p>
+            </li>
+            <li>
+              <p>How do I remove everything from localStorage?</p>
+              <p>localStorage.clear();</code></p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          geolocation
+          <ul>
+            <li>
+              <p>How do I get the user's location?</p>
+              <p><code>navigator.geolocation.getCurrentPosition(callbackFunc);</code> Reference <em></em>coords.latitude</em> and <em>coords.longitude.</em></p>
+            </li>
+            <li><code>position.speed</code> - Returns the ground speed of the device in meters per second.</li>
+            <li><code>position.altitude</code> - Returns an estimate of the device's altitude.</li>
+            <li><code>position.heading</code> - Returns the direction the device is moving in.</li>
+            <li><code>position.timestamp</code> - Returns the time that the position information was recorded.</li>
+            <li><code>navigator.geolocation.watchPosition(func) - Calls func every time the position is updated.</code></li>
+            <li><code>navigator.geolocation.clearWatch(id) - Clears a watchPosition callback.</code></li>
+          </ul>
+        </li>
+        <li>
+          web workers
+          <ul>
+            <li>
+              <p>How do I create a web worker?</p>
+              <p><code>const worker = new Worker('task.js');</code></p>
+            </li>
+            <li>
+              <p>How do I send data to/from web workers?</p>
+              <p><code>worker.postMessage('data')</code> and from within the worker use <code>self.postMessage('data')</code></p>
+            </li>
+            <li>
+              <p>How do I receive data from a web worker?</p>
+              <p><code>worker.addEventListener('message', (event) => {...}, false);</code></p>
+            </li>
+            <li>
+              <p>How do I stop a web worker?</p>
+              <p><code>worker.terminate();</code> or from within the worker use <code>self.close();</code></p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>What are service workers?</p>
+          <p><em>They allow a worker script to run in the background with the added benefit of being able to intercept network requests.</em></p>
+        </li>
+        <li>
+          <p>What is Websockets?</p>
+          <p><em>It is a new protocol that allows two-way communication.</em></p>
+        </li>
+        <li>
+          Notifications
+          <ul>
+            <li>
+              <p>How do I ask the user for permission to display notifications?</p>
+              <p><code>Notification.requestPermission()</code></p>
+            </li>
+            <li>
+              <p>How do I check if the user has granted permission to show notifications?</p>
+              <p><code>if (Notification.permission === 'granted') { ... }</code></p>
+            </li>
+            <li>
+              <p>How do I show a notification?</p>
+              <p><code>new Notification('Hello JavaScript!', { body: 'hi', icon: 'image.png' });</code></p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          audio/video properties and functions
+          <ul>
+            <li><code>video.play()</code> - Plays a video</li>
+            <li><code>video.pause()</code> - Pauses a video</li>
+            <li><code>video.volume</code> - Sets or gets the volume for a video</li>
+            <li><code>video.muted</code> - Sets or gets whether or not a video is muted.</li>
+            <li><code>video.currentTime</code> - Sets or gets the current position.</li>
+            <li><code>video.playbackRate</code> - Fast-forward at 8x speed</li>
+            <li><code>video.loop - Set true to repeat in a loop</code></li>
+            <li><code>video.duration - </code> - How long the video lasts</li>
+          </ul>
+        </li>
+      </ul>
+    </main>
+  </body>
+</html>
+
