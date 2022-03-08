@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WDD330 | Week 9 Notes | Brandon Rock</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+  <body>
+    <header>
+      <h1>WDD330 Portfolio - Week 10 Notes</h1>
+      <h2>By Brandon Rock</h2>
+    </header>
+    <main>
+      <h3>Week 10</h3>
+
+      <h4>MDN: Validating Forms</h4>
+      <ul>
+        <li>To ensure an application is secure, what types of validation should be considered?</li>
+        <p><em>An application should always perform security checks on any form-submitted data on the server-side as well as the client-side.</em></p>
+      </ul>
+      <ul>
+        <p>What are three reasons for validating forms?</p>
+        <ol>
+          <li>We want to get the right data, in the right format.</li>
+          <li>We want to protect our users' data.</li>
+          <li>We want to protect ourselves.</li>
+        </ol>
+      </ul>
+      <ul>
+        <p>What are the two types of client-side validation?</p>
+        <ul>
+          <li>
+            <p>Built-in form validation.</p>
+            <ul>
+              <li>required - Specifies whether a form field needs to be filled.</li>
+              <li>minlength and maxlength - Specifies the minimum and maximum length of textual data.</li>
+              <li>min and max - Specifies the minimum and maximum values of numerical input types.</li>
+              <li>types - Specifies whether the data needs to be a number, an email address, or some other specific preset type.</li>
+              <li>pattern - Specifies a regular expression that defines a pattern the entered data needs to follow.</li>
+            </ul>
+          </li>
+          <li>JavaScript validation.</li>
+          <ul>
+            <li>
+              <p>When would I use JavaScript validation?</p>
+              <p><em>If you want to take control over the look and feel of native error messages or to deal with legacy browsers that do not support HTML's built-in form validation.</em></p>
+            </li>
+            <li>
+              <p>Constraint Validation API</p>
+              <ul>
+                <p>DOM interfaces:</p>
+                <ul>
+                  <li>HTMLButtonElement - Represents a &lt;button&gt; element.</li>
+                  <li>HTMLFieldSetElement - Represents a &lt;fieldset&gt; element.</li>
+                  <li>HTMLInputElement - Represents an &lt;input&gt; element.</li>
+                  <li>HTMLOutputElement - Represents an &lt;output&gt; element.</li>
+                  <li>HTMLSelectElement - Represents a &lt;select&gt; element.</li>
+                  <li>HTMLTextAreaElement - Represents a &lt;textarea&gt; element.</li>
+                </ul>
+                <p>Common Properties</p>
+                <ul>
+                  <li>validationMessage - Returns a localized message describing the validation constraints that the control does not satisfy.</li>
+                  <li>validity - Returns a validityState object that contains several properties describing the validitiy state of the element, including:
+                    <ul>
+                      <li>patternMismatch - Returns true if the value does not match the specified pattern.</li>
+                      <li>tooLong - Returns true if the value is longer than the maximum length specified by the maxlength attribute.</li>
+                      <li>tooShort - Returns true if the value is shorter than the minimu length specified by the minlength attribute.</li>
+                      <li>rangeOverflow - Returns true if the value is greater than the maximum specified by the max attribute.</li>
+                      <li>rangeUnderflow - Returns true if the valuye is less than the minimum specified by the min attribute.</li>
+                      <li>typeMismatch - Returns true if the value is not in the required syntax (when type is email or url).</li>
+                      <li>valid - Returns true if the element meets all its validation constraints.</li>
+                    </ul>
+                  </li>
+                  <li>willValidate - Returns true if the element will be validated when the form is submitted.</li>
+                </ul>
+                <p>Common Methods</p>
+                <ul>
+                  <li>checkValidity() - Returns true if the element's value has no validity problems.</li>
+                  <li>reportVlidity() - Reports invalid field(s) using events.</li>
+                  <li>setCustomValidity(message) - Adds a custom error message to the element.</li>
+                </ul>
+              </ul>
+            </li>
+          </ul>
+        </ul>
+      </ul>
+
+      <h4>MDN: Using the Fetch API</h4>
+      <ul>
+        <li>
+          <p>What is the Fetch API?</p>
+          <p><em>The Fetch API provides a JavaScript interface for accessing and manipulating parts of the HTTP pipeline, such as requests and responses.</em></p>
+        </li>
+        <li>
+          <p>Basic Fetch API example</p>
+          <p><code>fetch('http://example.com/movies.json')</code></p>
+          <p><code>.then(response => response.json())</code></p>
+          <p><code>.then(data => console.log(data));</code></p>
+        </li>
+        <li>
+          <p>Properties of fetch config</p>
+          <ul>
+            <li>method - HTTP method</li>
+            <li>mode - no-cors, *cors, same-origin</li>
+            <li>cache - default, no-cache, reload, force-cache, only-if-cached</li>
+            <li>credentials - include, *same-origin, omit</li>
+            <li>headers - nested object consisting of HTTP headers ('Content-Type': 'application/json')</li>
+            <li>redirect - manual, *follow, error</li>
+            <li>referrerPolicy - no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url</li>
+            <li>body - body data, must match "Content-Type" header (JSON.stringify(data))</li>
+          </ul>
+        </li>
+        <li>
+          <p>Classes</p>
+          <ul>
+            <li>
+              <p>Request - Used to build the request ahead of time.</p>
+              <p><code>const myRequest = new Request('url', { method: 'GET', ... });</code></p>
+            </li>
+            <li>
+              <p>Headers - Allows you to create your own headers.</p>
+              <p><code>const myHeaders = new Headers();</code></p>
+              <p><code>myHeaders.append('Content-Type', 'text/plain');</code></p>
+              <p>Possible guard values:</p>
+              <ul>
+                <li>none - default</li>
+                <li>request - guard for a headers object obtained from a request.</li>
+                <li>request-no-cors - guard for a headers object obtained from a request created with Request.mode no-cors.</li>
+                <li>response - guard for a headers object obtained from a response.</li>
+                <li>immutable - guard that renders a headers object read-only; mostly used for ServiceWorkers.</li>
+              </ul>
+            </li>
+            <ul>
+              <p>Response object properties</p>
+              <ul>
+                <li>Response.status - An integer (default value 200) containing the response status code.</li>
+                <li>Response.statusText - A string (default value ""), that corresponds to the HTTP status code message.</li>
+                <li>Response.ok - Shorthand for checking that a status is in the range 200-299 inclusive.</li>
+              </ul>
+            </ul>
+            <ul>
+              <p>Body types</p>
+              <ul>
+                <li>ArrayBuffer</li>
+                <li>ArrayBufferView</li>
+                <li>Blob/File</li>
+                <li>string</li>
+                <li>URLSearchParams</li>
+                <li>FormData</li>
+              </ul>
+              <p>Body methods</p>
+              <ul>
+                <li>Request.arrayBuffer() / Response.arrayBuffer()</li>
+                <li>Request.blob() / Response.blob()</li>
+                <li>Request.formData() / Response.formData()</li>
+                <li>Request.json() / Response.json()</li>
+                <li>Request.text() / Response.text()</li>
+              </ul>
+            </ul>
+          </ul>
+        </li>
+      </ul>
+    </main>
+  </body>
+</html>      

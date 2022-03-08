@@ -1,0 +1,12 @@
+body {
+  font-family: Arimo, sans-serif
+}
+
+main {
+  background-color: #ad343e;
+  padding: 2rem;
+}
+
+h1, h2, h3, h4, h5 {
+  color: #f2af29;
+}

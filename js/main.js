@@ -35,6 +35,10 @@ const renderToc = function () {
     {
       label: 'Week 9 Notes',
       url: 'week09/index.html'
+    },
+    {
+      label: 'Final Project',
+      url: 'final/index.html'
     }
   ];
 
