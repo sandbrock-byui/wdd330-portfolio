@@ -1,0 +1,158 @@
+:root {
+  --color1: #ad343e;
+  --color2: #474747;
+  --color3: #f2af29;
+  --color4: #000000;
+  --color5: #e0e0ce;
+
+  --header-background: var(--color1);
+  --header-text: var(--color3);
+  --hamburger-text: var(--color3);
+
+  --nav-background: var(--color1);
+  --nav-text: #ffffff;
+
+  --main-background: var(--color2);
+}
+
+/*********************
+ * Body and Common
+ *********************/
+a,
+article,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+main,
+p,
+picture,
+ul {
+  margin: 0;
+}
+
+body {
+  font-family: 'Arimo', sans-serif;
+  font-size: 1.2rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: --var(header-text);
+}
+
+/*********************
+ * Header
+ *********************/
+.header-wide {
+  align-items: center;
+  background-color: var(--header-background);
+}
+
+.title-bar {
+  color: var(--header-text);
+  display: flex;
+  /*justify-content: center;*/
+  margin: 0 auto;
+  max-width: 930px;
+}
+
+.title-bar picture {
+  margin-top: 0.5rem;
+}
+
+.title-bar img {
+  height: auto;
+  width: 100px;
+}
+
+.headings {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  margin-left: 1rem;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.headings h1 {
+  font-size: 2rem;
+}
+
+.subtitle {
+  font-size: 0.8rem;
+}
+
+.hamburger {
+  margin-left: 2rem;
+  margin-top: 1.5rem;
+}
+
+.hamburgerButton {
+  background-color: transparent;
+  color: var(--hamburger-text);
+  cursor: pointer;
+}
+
+/*********************
+ * Navigation
+ *********************/
+nav {
+  background-color: var(--nav-background);
+}
+
+.navigation {
+  list-style: none;
+  margin: 0 auto;
+  max-width: 930px;
+  padding: 0;
+}
+
+.navigation li {
+  display: none;
+}
+
+.navigation li a {
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  color: var(--nav-text);
+  display: block;
+  padding: 0.8rem 2%;
+  text-align: left;
+  text-decoration: none;
+  text-indent: 1rem;
+}
+
+.navigation li.navigation-active a {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--nav-text-hover);
+  font-weight: bold;
+}
+
+.navigation li a:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: var(--nav-text-hover);
+  font-weight: bold;
+}
+
+.responsive li {
+  display: block;
+}
+
+/*********************
+ * Main
+ *********************/
+main {
+  background-color: var(--main-background);
+  max-width: 930px;
+  margin: 0 auto;
+}

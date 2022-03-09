@@ -2,17 +2,19 @@ import FooterController from './footer/footer.controller.js';
 import NavigationController from './navigation/navigation.controller.js';
 
 export default class App {
-  start(appSelector) {
-    this.navigationController = new NavigationController(appSelector, this._handleNavigate);
-    this.navigationController.start();
-    this.navigationController.navigate(window.location.pathname);
+  constructor(config) {
+    this.config = config;
+    this.navigationController = new NavigationController(this.config, this.handleNavigate);
+    this.footerController = new FooterController(this.config);
+  }
 
-    this.footerController = new FooterController(appSelector);
-    this.footerController.start();
+  render() {
+    //this.navigationController.render();
+    //this.footerController.render();
   }
 
   handleNavigate(e) {
     this.workspaceController = e.controller;
-    this.workspaceController.start();
+    this.workspaceController.render();
   }
 };

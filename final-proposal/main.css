@@ -5,6 +5,7 @@ body {
 main {
   background-color: #ad343e;
   padding: 2rem;
+  margin: 0 auto;
 }
 
 h1, h2, h3, h4, h5 {

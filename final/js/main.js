@@ -1,4 +1,12 @@
 import AppController from './app.controller.js';
 
-const app = new AppController();
-app.start('#app');
+const app = new AppController({
+  baseUrl: '/final',
+  selectors: {
+    navigation: '#navigation', 
+    workspace: '#workspace', 
+    footer: '#footer'
+  }
+});
+
+app.render();

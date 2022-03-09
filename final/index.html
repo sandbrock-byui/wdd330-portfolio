@@ -10,13 +10,52 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles/normalize.css" />
-    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/small.css" />
+    <link rel="stylesheet" href="styles/medium.css" />
   </head>
   <body>
-    <div id="app">
-      The Edible Delights application is loading. Ensure JavaScript is enabled.
-    </div>
+    <header>
+      <div class="header-wide">
+        <section class="title-bar">
+          <picture class="logo">
+            <img src="images/logo.png" alt="Edible Delights Logo" />
+          </picture>
 
-    <script src="js/main.js"></script>
+          <div class="headings">
+            <h1>Edible Delights</h1>
+            <p class="subtitle">For Cooks By Cooks</p>
+          </div>
+
+          <h1 class="hamburger">
+            <span class="hamburgerButton">&#9776;</span>
+          </h1>
+        </section>
+      </div>
+    </header>
+
+    <main>
+      <nav>
+        <ul class="navigation">
+          <li><a href="index.html#home" class="route">Home</a></li>
+          <li><a href="index.html#recipes" class="route">Recipes</a></li>
+          <li><a href="index.html#nutrition" class="route">Nutrition</a></li>
+          <li><a href="index.html#profile" class="route">Profile</a></li>
+          <li><a href="index.html#logout" class="route">Logout</a></li>
+        </ul>
+      </nav>
+
+      <noscript>
+        <p>
+          The Edible Delights application requires JavaScript. Ensure JavaScript
+          is enabled in your browser.
+        </p>
+      </noscript>
+      
+      <div id="workspace"></div>
+    </main>
+
+    <footer></footer>
+
+    <script type="module" src="js/main.js"></script>
   </body>
 </html>
