@@ -7,8 +7,16 @@ export default class SignupView {
   render() {
     const signupEl = document.createElement('div');
     signupEl.innerHTML = `
-      <h1>Signup</h1>
-      <h2>Edible Delights</h2>
+      <form id="input-form">
+        <fieldset>
+          <legend>Signup</legend>
+          <label class="label-top">Email: <input type="email" name="username" required></label>
+          <label class="label-top">Password: <input type="password" name="password" required></label>
+          <label class="label-top">Verify: <input type="password" name="password" required></label>
+        </fieldset>
+
+        <input class="submitBtn" type="submit" value="Signup">
+      </form>
     `;
     this.rootEl.innerHTML = signupEl.innerHTML;
     this.rootEl = document.querySelector(this.config.selectors.workspace);

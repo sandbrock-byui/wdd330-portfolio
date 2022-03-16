@@ -63,4 +63,28 @@ export default class NavigationView {
   initialize() {
     this.connectNavigationCallbacks();
   }
+
+  login() {
+    const needsAuthEls = this.navigationEl.querySelectorAll('.needs-auth');
+    needsAuthEls.forEach(el => {
+      el.classList.add('needs-auth--authorized');
+    });
+
+    const noAuthEls = this.navigationEl.querySelectorAll('.no-auth');
+    noAuthEls.forEach(el => {
+      el.classList.add('no-auth--authorized');
+    });
+  }
+
+  logout() {
+    const needsAuthEls = this.navigationEl.querySelectorAll('.needs-auth');
+    needsAuthEls.forEach(el => {
+      el.classList.remove('needs-auth--authorized');
+    });
+
+    const noAuthEls = this.navigationEl.querySelectorAll('.no-auth');
+    noAuthEls.forEach(el => {
+      el.classList.remove('no-auth--authorized');
+    });
+  }
 }

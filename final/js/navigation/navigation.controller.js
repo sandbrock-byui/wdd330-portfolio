@@ -7,9 +7,9 @@ import LoginController from '../user/login.controller.js';
 import SignupController from '../user/signup.controller.js';
 
 export default class NavigationController {
-  constructor(config, callbacks) {
+  constructor(config) {
     this.config = config;
-    this.callbacks = callbacks;
+    this.callbacks = config.callbacks;
     this.view = new NavigationView(config, {
       onnavigate: this.navigateCallback.bind(this)
     });
@@ -28,7 +28,6 @@ export default class NavigationController {
       { path: '/index.html#recipes', controller: recipeListController },
       { path: '/index.html#nutrition', controller: nutritionController },
       { path: '/index.html#profile', controller: profileController },
-      // { path: '/index.html#logout', controller: logoutController }
       { path: '/index.html#login', controller: loginController },
       { path: '/index.html#signup', controller: signupController }
     ];
@@ -39,11 +38,26 @@ export default class NavigationController {
     this.renderRoute();
   }
 
+  login() {
+    this.view.login();
+    window.location.assign('index.html#home');
+  }
+
+  logout() {
+    this.view.logout();
+    window.location.assign('index.html#login');
+  }
+
   navigateCallback() {
     this.renderRoute();
   }
 
   renderRoute() {
+    if (window.location.hash === '#logout') {
+      this.callbacks.onlogout();
+      return;
+    }
+
     const currentPath = `${window.location.pathname}${window.location.hash}`;
     const route = this.routes.find((r) => {
       const routePath = `${this.config.baseUrl}${r.path}`;
