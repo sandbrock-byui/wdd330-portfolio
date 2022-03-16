@@ -36,11 +36,13 @@
     <main>
       <nav>
         <ul class="navigation">
-          <li><a href="index.html#home" class="route">Home</a></li>
-          <li><a href="index.html#recipes" class="route">Recipes</a></li>
-          <li><a href="index.html#nutrition" class="route">Nutrition</a></li>
-          <li><a href="index.html#profile" class="route">Profile</a></li>
-          <li><a href="index.html#logout" class="route">Logout</a></li>
+          <li class="needs-auth"><a href="index.html#home" class="route">Home</a></li>
+          <li class="needs-auth"><a href="index.html#recipes" class="route">Recipes</a></li>
+          <li class="needs-auth"><a href="index.html#nutrition" class="route">Nutrition</a></li>
+          <li class="needs-auth"><a href="index.html#profile" class="route">Profile</a></li>
+          <li class="needs-auth"><a href="index.html#logout" class="route">Logout</a></li>
+          <li class="no-auth"><a href="index.html#login" class="route">Login</a></li>
+          <li class="no-auth"><a href="index.html#signup" class="route">Sign Up</a></li>
         </ul>
       </nav>
 
