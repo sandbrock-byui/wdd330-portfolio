@@ -10,6 +10,7 @@ export default class NavigationController {
   constructor(config) {
     this.config = config;
     this.callbacks = config.callbacks;
+    this.loggedin = false;
     this.view = new NavigationView(config, {
       onnavigate: this.navigateCallback.bind(this)
     });
@@ -39,11 +40,13 @@ export default class NavigationController {
   }
 
   login() {
+    this.loggedin = true;
     this.view.login();
     window.location.assign('index.html#home');
   }
 
   logout() {
+    this.loggedin = false;
     this.view.logout();
     window.location.assign('index.html#login');
   }
@@ -55,6 +58,11 @@ export default class NavigationController {
   renderRoute() {
     if (window.location.hash === '#logout') {
       this.callbacks.onlogout();
+      return;
+    }
+
+    if (!this.loggedin && (window.location.hash !== "#login" && window.location.hash !== "#signup")) {
+      this.logout();
       return;
     }
 

@@ -159,7 +159,8 @@ main {
 }
 
 #workspace {
-  padding: 0 1rem;
+  /*padding: 0 1rem;*/
+  padding: 1rem;
 }
 
 /*********************
@@ -168,7 +169,7 @@ main {
 
 #input-form {
   margin: 0;
-  padding: 1rem 0;
+  /*padding: 1rem 0;*/
 }
 
 #input-form form fieldset {

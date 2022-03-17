@@ -54,8 +54,22 @@ export default class NavigationView {
     });
 
     window.addEventListener('popstate', (e) => {
+      this.highlightActiveRoute();
       if (this.callbacks && this.callbacks.onnavigate) {
         this.callbacks.onnavigate();
+      }
+    });
+  }
+
+  highlightActiveRoute() {
+    const routes = this.navigationEl.querySelectorAll('.route');
+    routes.forEach(route => {
+      const path = route.getAttribute('href');
+      const parentEl = route.parentElement;
+      if (path === window.location.hash) {
+        parentEl.classList.add('navigation-active');
+      } else {
+        parentEl.classList.remove('navigation-active');
       }
     });
   }
