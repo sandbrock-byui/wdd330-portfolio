@@ -23,13 +23,11 @@ export default class NavigationController {
     const signupController = new SignupController(config);
 
     this.routes = [
-      { path: '/', controller: homeController },
-      { path: '/index.html', controller: homeController },
       { path: '/index.html#home', controller: homeController },
       { path: '/index.html#recipes', controller: recipeListController },
       { path: '/index.html#nutrition', controller: nutritionController },
       { path: '/index.html#profile', controller: profileController },
-      { path: '/index.html#login', controller: loginController },
+      { path: '/index.html#login', controller: recipeListController },
       { path: '/index.html#signup', controller: signupController }
     ];
   }

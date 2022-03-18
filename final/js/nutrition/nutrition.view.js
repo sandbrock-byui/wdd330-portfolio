@@ -7,8 +7,7 @@ export default class NutritionView {
   render() {
     const nutritionEl = document.createElement('div');
     nutritionEl.innerHTML = `
-      <h1>Nutrition</h1>
-      <h2>Edible Delights</h2>
+      <h2>Edible Delights Nutrition</h2>
     `;
     this.rootEl.innerHTML = nutritionEl.innerHTML;
     this.rootEl = document.querySelector(this.config.selectors.workspace);

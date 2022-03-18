@@ -1,4 +1,5 @@
 import RecipeListView from './recipelist.view.js';
+import RecipeModel from './recipe.model.js';
 
 export default class RecipeListController {
   constructor(config) {
@@ -7,6 +8,7 @@ export default class RecipeListController {
   }
   
   render() {
-    this.view.render();
+    const recipes = RecipeModel.getAllRecipes();
+    this.view.render(recipes);
   }
 };

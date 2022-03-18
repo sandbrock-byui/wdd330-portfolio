@@ -7,8 +7,7 @@ export default class ProfileView {
   render() {
     const profileEl = document.createElement('div');
     profileEl.innerHTML = `
-      <h1>Profile</h1>
-      <h2>Edible Delights</h2>
+      <h2>Edible Delights Profile</h2>
     `;
     this.rootEl.innerHTML = profileEl.innerHTML;
     this.rootEl = document.querySelector(this.config.selectors.workspace);
