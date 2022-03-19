@@ -8,7 +8,7 @@ export default class RecipeListController {
   }
   
   render() {
-    const recipes = RecipeModel.getAllRecipes();
+    const recipes = RecipeModel.getAll();
     this.view.render(recipes);
   }
 };

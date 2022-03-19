@@ -1,9 +1,4 @@
 export default class RecipeListView {
-  config = null;
-  activeDetailEl = null;
-  activeRecipeEl = null;
-  rootEl = null;
-
   constructor(config) {
     this.config = config;
     this.rootEl = document.querySelector(config.selectors.workspace);
@@ -14,26 +9,38 @@ export default class RecipeListView {
     headers.forEach(header => {
       header.addEventListener('click', this.headerClickCallback.bind(this));
     });
+
+    const links = this.rootEl.querySelectorAll('.recipe-detail-link');
+    links.forEach(link => {
+      link.addEventListener('click', this.openClickCallback.bind(this), false);
+    });
   }
 
   headerClickCallback(e) {
     const recipeEl = e.target.parentElement;
     const detailEl = recipeEl.querySelector('.recipe-detail');
-
+    const isSame = this.activeDetailEl && this.activeDetailEl === detailEl;
+    
     if (this.activeDetailEl) {
       this.activeDetailEl.classList.remove('recipe-detail-active');
+      this.activeDetailEl = null;
     }
 
-    if (recipeEl === this.activeRecipeEl) {
-      this.activeRecipeEl = null;
-      this.activeDetailEl = null;
+    if (isSame) {
       return;
     }
 
-    this.activeRecipeEl = recipeEl;
-    this.activeDetailEl = detailEl;
-
     detailEl.classList.add('recipe-detail-active');
+    this.activeDetailEl = detailEl;
+  }
+
+  openClickCallback(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    const id = e.target.getAttribute('data-id');
+    const path = `index.html?id=${id}#recipe`
+    window.location.assign(path);
   }
   
   render(recipes) {
@@ -47,8 +54,11 @@ export default class RecipeListView {
         <div class="recipe">
           <div class="recipe-header">
             <strong>${recipe.title}</strong>
+            <input class="submitBtn recipe-detail-link" type="submit" value="Open" data-id="${recipe.id}">
+            <!--<a class="recipe-detail-link submitBtn" href="#recipe-detail?id=${recipe.id}">Open</a>-->
           </div>
           <div class="recipe-detail">
+            <p class="recipe-detail--description">${recipe.description}</p>
           </div>
         </div>
       `;

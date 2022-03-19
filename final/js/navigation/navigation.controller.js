@@ -1,5 +1,6 @@
 import NavigationView from './navigation.view.js';
 import HomeController from '../home/home.controller.js';
+import RecipeController from '../recipe/recipe.controller.js';
 import RecipeListController from '../recipe/recipelist.controller.js';
 import NutritionController from '../nutrition/nutrition.controller.js';
 import ProfileController from '../profile/profile.controller.js';
@@ -16,6 +17,7 @@ export default class NavigationController {
     });
 
     const homeController = new HomeController(config);
+    const recipeController = new RecipeController(config);
     const recipeListController = new RecipeListController(config);
     const nutritionController = new NutritionController(config);
     const profileController = new ProfileController(config);
@@ -24,6 +26,7 @@ export default class NavigationController {
 
     this.routes = [
       { path: '/index.html#home', controller: homeController },
+      { path: '/index.html#recipe', controller: recipeController },
       { path: '/index.html#recipes', controller: recipeListController },
       { path: '/index.html#nutrition', controller: nutritionController },
       { path: '/index.html#profile', controller: profileController },
@@ -54,15 +57,20 @@ export default class NavigationController {
   }
 
   renderRoute() {
+    console.log(
+      'Rendering route',
+      window.location.pathname + window.location.hash
+    );
+
     if (window.location.hash === '#logout') {
       this.callbacks.onlogout();
       return;
     }
 
-    if (!this.loggedin && (window.location.hash !== "#login" && window.location.hash !== "#signup")) {
-      this.logout();
-      return;
-    }
+    // if (!this.loggedin && (window.location.hash !== "#login" && window.location.hash !== "#signup")) {
+    //   this.logout();
+    //   return;
+    // }
 
     const currentPath = `${window.location.pathname}${window.location.hash}`;
     const route = this.routes.find((r) => {
@@ -72,6 +80,10 @@ export default class NavigationController {
 
     if (route && this.callbacks && this.callbacks.onnavigate) {
       this.callbacks.onnavigate({ controller: route.controller });
+    }
+
+    if (!route) {
+      console.error('Unable to locate route for path', currentPath);
     }
   }
 }

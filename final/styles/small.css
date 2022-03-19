@@ -233,7 +233,7 @@ form label.label-top input:required:valid {
   border-left: green solid 6px;
 }
 
-form input.submitBtn {
+.submitBtn {
   background-color: var(--nav-background);
   border-radius: .5rem;
   color: white;
@@ -245,7 +245,7 @@ form input.submitBtn {
   width: 96%;
 }
 
-form input.submitBtn:hover {
+input.submitBtn:hover {
   color: var(--nav-text-hover);
 }
 
@@ -263,21 +263,35 @@ form input.submitBtn:hover {
 .recipe-header {
   cursor: pointer;
   padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.recipe-header .submitBtn {
+  margin-left: auto;
+  max-width: 6rem; 
 }
 
 .recipe-detail {
-  /*display: none;*/
+  background-color: white;
   height: 0px;
-  transition: height .2s;
+  transition: height .4s;
 }
 
 .recipe-detail-active {
-  display: block;
-  height: 100px;
-  background-color: white;
-  transition: height .2s;
+  height: auto;
+  transition: height .4s;
 }
 
+.recipe-detail .recipe-detail--description {
+  display: none;
+  padding: 1rem;
+}
+
+.recipe-detail-active .recipe-detail--description {
+  display: block;
+  padding: 1rem;
+}
 /*********************
  * Footer
  *********************/
