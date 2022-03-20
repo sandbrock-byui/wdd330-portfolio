@@ -1,14 +1,15 @@
 export default class LoginView {
-  constructor(config) {
-    this.config = config;
-    this.callbacks = config.callbacks;
-    this.rootEl = document.querySelector(config.selectors.workspace);
+  constructor(diService) {
+    this.config = diService.get('config');
+    this.callbacks = diService.get('appCallbacks');
+    this.rootEl = document.querySelector(this.config.selectors.workspace);
   }
 
   connectFormCallbacks() {
     const submitBtn = this.rootEl.querySelector('.submitBtn');
     submitBtn.addEventListener('click', (e) => {
       e.preventDefault();
+      e.stopPropagation();
       this.callbacks.onlogin();
     });
   }

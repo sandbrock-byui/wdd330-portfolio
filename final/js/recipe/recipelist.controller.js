@@ -1,14 +1,12 @@
-import RecipeListView from './recipelist.view.js';
-import RecipeModel from './recipe.model.js';
-
 export default class RecipeListController {
-  constructor(config) {
-    this.config = config;
-    this.view = new RecipeListView(config);
+  constructor(diService) {
+    this.config = diService.get('config');
+    this.view = diService.get('recipeListView');
+    this.model = diService.get('recipeModel');
   }
   
   render() {
-    const recipes = RecipeModel.getAll();
+    const recipes = this.model.getAll();
     this.view.render(recipes);
   }
 };

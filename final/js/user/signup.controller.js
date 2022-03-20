@@ -1,9 +1,7 @@
-import SignupView from './signup.view.js';
-
 export default class SignupController {
-  constructor(config) {
-    this.config = config;
-    this.view = new SignupView(config);
+  constructor(diService) {
+    this.config = diService.get('config');
+    this.view = diService.get('signupView');
   }
   
   render() {

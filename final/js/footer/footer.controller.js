@@ -1,5 +1,10 @@
 export default class FooterController {
-  render(selectors) {
+  constructor(diService) {
+    this.config = diService.get('config');
+    this.view = diService.get('footerView');
+  }
+
+  render() {
     
   }
 };

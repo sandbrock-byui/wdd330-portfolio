@@ -1,6 +1,6 @@
 
 export default class QueryParamService {
-  static getQueryParams() {
+  getQueryParams() {
     const params = new Proxy(new URLSearchParams(window.location.search), {
       get: (searchParams, prop) => searchParams.get(prop),
     });

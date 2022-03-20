@@ -1,7 +1,7 @@
 export default class ProfileView {
-  constructor(config) {
-    this.config = config;
-    this.rootEl = document.querySelector(config.selectors.workspace);
+  constructor(diService) {
+    this.config = diService.get('config');
+    this.rootEl = document.querySelector(this.config.selectors.workspace);
   }
   
   render() {

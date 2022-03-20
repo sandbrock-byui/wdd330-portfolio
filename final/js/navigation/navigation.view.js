@@ -1,19 +1,18 @@
 export default class NavigationView {
-  constructor(config, callbacks) {
-    this.config = config;
-    this.callbacks = callbacks;
+  constructor(diService) {
+    this.config = diService.get('config');
 
-    this.navigationEl = document.querySelector(config.selectors.navigation);
+    this.navigationEl = document.querySelector(this.config.selectors.navigation);
     if (!this.navigationEl) {
       throw new Error(
-        `Unable to locate navigation element using selector ${config.selectors.navigation}`
+        `Unable to locate navigation element using selector ${this.config.selectors.navigation}`
       );
     }
 
-    this.hamburgerEl = document.querySelector(config.selectors.hamburger);
+    this.hamburgerEl = document.querySelector(this.config.selectors.hamburger);
     if (!this.hamburgerEl) {
       throw new Error(
-        `Unable to locate hamburger element using selector ${config.selectors.hamburger}`
+        `Unable to locate hamburger element using selector ${this.config.selectors.hamburger}`
       );
     }
     this.connectWindowCallbacks();
@@ -100,5 +99,9 @@ export default class NavigationView {
     noAuthEls.forEach(el => {
       el.classList.remove('no-auth--authorized');
     });
+  }
+
+  setCallbacks(callbacks) {
+    this.callbacks = callbacks;
   }
 }

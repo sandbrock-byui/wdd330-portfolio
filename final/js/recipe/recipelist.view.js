@@ -1,28 +1,40 @@
 export default class RecipeListView {
-  constructor(config) {
-    this.config = config;
-    this.rootEl = document.querySelector(config.selectors.workspace);
+  constructor(diService) {
+    this.config = diService.get('config');
+    this.navigationController = diService.get('navigationController');
+    this.rootEl = document.querySelector(this.config.selectors.workspace);
   }
 
   connectRecipeCallbacks() {
-    const headers = this.rootEl.querySelectorAll('.recipe-header');
+    const headers = this.rootEl.querySelectorAll('.recipe-list-item--header');
     headers.forEach(header => {
       header.addEventListener('click', this.headerClickCallback.bind(this));
     });
 
-    const links = this.rootEl.querySelectorAll('.recipe-detail-link');
+    const links = this.rootEl.querySelectorAll('.recipe-list-item--detail-link');
     links.forEach(link => {
       link.addEventListener('click', this.openClickCallback.bind(this), false);
     });
   }
 
   headerClickCallback(e) {
-    const recipeEl = e.target.parentElement;
-    const detailEl = recipeEl.querySelector('.recipe-detail');
+    let recipeEl;
+    if (e.target.nodeName === 'STRONG') {
+      recipeEl = e.target.parentElement.parentElement;
+    } else {
+      recipeEl = e.target.parentElement;      
+      
+    }
+    const detailEl = recipeEl.querySelector('.recipe-list-item--detail');
+
+    if (!recipeEl || !detailEl) {
+      return;
+    }
+
     const isSame = this.activeDetailEl && this.activeDetailEl === detailEl;
     
     if (this.activeDetailEl) {
-      this.activeDetailEl.classList.remove('recipe-detail-active');
+      this.activeDetailEl.classList.remove('recipe-list-item--detail-active');
       this.activeDetailEl = null;
     }
 
@@ -30,7 +42,7 @@ export default class RecipeListView {
       return;
     }
 
-    detailEl.classList.add('recipe-detail-active');
+    detailEl.classList.add('recipe-list-item--detail-active');
     this.activeDetailEl = detailEl;
   }
 
@@ -39,8 +51,8 @@ export default class RecipeListView {
     e.stopPropagation();
     
     const id = e.target.getAttribute('data-id');
-    const path = `index.html?id=${id}#recipe`
-    window.location.assign(path);
+    const path = `index.html?id=${id}#recipe`;
+    this.navigationController.navigate(path);
   }
   
   render(recipes) {
@@ -51,14 +63,13 @@ export default class RecipeListView {
 
     recipes.forEach(recipe => {
       recipesEl.innerHTML += `
-        <div class="recipe">
-          <div class="recipe-header">
+        <div class="recipe-list-item">
+          <div class="recipe-list-item--header">
             <strong>${recipe.title}</strong>
-            <input class="submitBtn recipe-detail-link" type="submit" value="Open" data-id="${recipe.id}">
-            <!--<a class="recipe-detail-link submitBtn" href="#recipe-detail?id=${recipe.id}">Open</a>-->
+            <input class="submitBtn recipe-list-item--detail-link" type="submit" value="Open" data-id="${recipe.id}">
           </div>
-          <div class="recipe-detail">
-            <p class="recipe-detail--description">${recipe.description}</p>
+          <div class="recipe-list-item--detail">
+            <p class="recipe-list-item--detail--description">${recipe.description}</p>
           </div>
         </div>
       `;

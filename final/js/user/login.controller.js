@@ -1,9 +1,7 @@
-import LoginView from './login.view.js';
-
 export default class LoginController {
-  constructor(config) {
-    this.config = config;
-    this.view = new LoginView(config);
+  constructor(diService) {
+    this.config = diService.get('config');
+    this.view = diService.get('loginView');
   }
   
   render() {

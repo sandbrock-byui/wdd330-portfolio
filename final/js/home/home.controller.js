@@ -1,9 +1,8 @@
-import HomeView from './home.view.js';
 
 export default class HomeController {
-  constructor(config) {
-    this.config = config;
-    this.view = new HomeView(config);
+  constructor(diService) {
+    this.config = diService.get('config');
+    this.view = diService.get('homeView');
   }
   
   render() {

@@ -1,17 +1,15 @@
-import QueryParamService from '../services/queryparam.service.js';
-import RecipeModel from './recipe.model.js';
-import RecipeView from './recipe.view.js';
-
 export default class RecipeController {
-  constructor(config) {
-    this.config = config;
-    this.view = new RecipeView(config);
+  constructor(diService) {
+    this.config = diService.get('config');
+    this.view = diService.get('recipeView');
+    this.model = diService.get('recipeModel');
+    this.queryParamService = diService.get('queryParamService');
   }
 
   render() {
-    const params = QueryParamService.getQueryParams();
+    const params = this.queryParamService.getQueryParams();
     const id = params.id;
-    const recipe = RecipeModel.getById(id);
+    const recipe = this.model.getById(id);
     this.view.render(recipe);
   }
 };

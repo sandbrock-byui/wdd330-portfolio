@@ -1,9 +1,7 @@
-import ProfileView from './profile.view.js';
-
 export default class ProfileController {
-  constructor(config) {
-    this.config = config;
-    this.view = new ProfileView(config);
+  constructor(diService) {
+    this.config = diService.get('config');
+    this.view = diService.get('profileView');
   }
   
   render() {

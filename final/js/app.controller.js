@@ -1,18 +1,21 @@
-import FooterController from './footer/footer.controller.js';
-import NavigationController from './navigation/navigation.controller.js';
-
 export default class App {
-  constructor(config) {
-    this.config = {
-      ...config,
-      callbacks: {
-        onnavigate: this.navigateCallback.bind(this),
-        onlogin: this.loginCallback.bind(this),
-        onlogout: this.logoutCallback.bind(this)
-      }
+  constructor(diService) {
+    this.config = diService.get('config');
+    this.navigationController = diService.get('navigationController');
+    const appCallbacks = {
+      onnavigate: this.navigateCallback.bind(this),
+      onlogin: this.loginCallback.bind(this),
+      onlogout: this.logoutCallback.bind(this)
     };
-    this.navigationController = new NavigationController(this.config);
-    this.footerController = new FooterController(this.config);
+    this.navigationController.setCallbacks(appCallbacks);
+    diService.register('appCallbacks', appCallbacks);
+    this.footerController = diService.get('footerController');
+  }
+
+  initialize() {
+    console.log('Initializing main application.');
+    this.navigationController.initialize();
+    //this.footerController.render();
   }
 
   loginCallback(e) {
@@ -24,12 +27,10 @@ export default class App {
   }
 
   navigateCallback(e) {
+    if (!e.controller) {
+      throw new Error('Unable to locate controller for selected route.');
+    }
     this.workspaceController = e.controller;
     this.workspaceController.render();
-  }
-
-  render() {
-    this.navigationController.initialize();
-    //this.footerController.render();
   }
 };

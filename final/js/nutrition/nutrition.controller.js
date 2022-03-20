@@ -1,9 +1,7 @@
-import NutritionView from './nutrition.view.js';
-
 export default class NutritionController {
-  constructor(config) {
-    this.config = config;
-    this.view = new NutritionView(config);
+  constructor(diService) {
+    this.config = diService.get('config');
+    this.view = diService.get('nutritionView');
   }
   
   render() {

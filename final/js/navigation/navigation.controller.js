@@ -1,41 +1,20 @@
-import NavigationView from './navigation.view.js';
-import HomeController from '../home/home.controller.js';
-import RecipeController from '../recipe/recipe.controller.js';
-import RecipeListController from '../recipe/recipelist.controller.js';
-import NutritionController from '../nutrition/nutrition.controller.js';
-import ProfileController from '../profile/profile.controller.js';
-import LoginController from '../user/login.controller.js';
-import SignupController from '../user/signup.controller.js';
 
 export default class NavigationController {
-  constructor(config) {
-    this.config = config;
-    this.callbacks = config.callbacks;
-    this.loggedin = false;
-    this.view = new NavigationView(config, {
+  constructor(diService) {
+    this.diService = diService;
+    this.config = diService.get('config');
+    this.view = diService.get('navigationView');
+    const navigationCallbacks = {
       onnavigate: this.navigateCallback.bind(this)
-    });
+    };
+    this.view.setCallbacks(navigationCallbacks);
+    diService.register('navigationCallbacks', navigationCallbacks);
 
-    const homeController = new HomeController(config);
-    const recipeController = new RecipeController(config);
-    const recipeListController = new RecipeListController(config);
-    const nutritionController = new NutritionController(config);
-    const profileController = new ProfileController(config);
-    const loginController = new LoginController(config);
-    const signupController = new SignupController(config);
-
-    this.routes = [
-      { path: '/index.html#home', controller: homeController },
-      { path: '/index.html#recipe', controller: recipeController },
-      { path: '/index.html#recipes', controller: recipeListController },
-      { path: '/index.html#nutrition', controller: nutritionController },
-      { path: '/index.html#profile', controller: profileController },
-      { path: '/index.html#login', controller: recipeListController },
-      { path: '/index.html#signup', controller: signupController }
-    ];
+    this.loggedin = false;
   }
 
   initialize() {
+    this.registerRoutes();
     this.view.initialize();
     this.renderRoute();
   }
@@ -43,25 +22,53 @@ export default class NavigationController {
   login() {
     this.loggedin = true;
     this.view.login();
-    window.location.assign('index.html#home');
+    this.navigate('index.html#home');
   }
 
   logout() {
     this.loggedin = false;
     this.view.logout();
-    window.location.assign('index.html#login');
+    this.navigate('index.html#login');
   }
 
   navigateCallback() {
     this.renderRoute();
   }
 
-  renderRoute() {
-    console.log(
-      'Rendering route',
-      window.location.pathname + window.location.hash
-    );
+  navigate(path) {
+    //window.location.assign(path);
+    window.history.pushState(null, '', path);
+    this.renderRoute();
+  }
 
+  registerRoute(path, controller) {
+    if (!path) {
+      throw new Error('Path not specified for route ' + path);
+    }
+
+    if (!controller) {
+      throw new Error('Controller not specified for route ' + path);
+    }
+     
+    this.routes.push({ 
+      path,
+      controller
+    });
+  }
+
+  registerRoutes() {
+    console.log('Registering routes.');
+    this.routes = [];
+    this.registerRoute('/index.html#home', this.diService.get('homeController'));
+    this.registerRoute('/index.html#login', this.diService.get('recipeListController'));
+    this.registerRoute('/index.html#nutrition', this.diService.get('nutritionController'));
+    this.registerRoute('/index.html#profile', this.diService.get('profileController'));
+    this.registerRoute('/index.html#recipe', this.diService.get('recipeController'));
+    this.registerRoute('/index.html#recipes', this.diService.get('recipeListController'));
+    this.registerRoute('/index.html#signup', this.diService.get('signupController'));
+  }
+
+  renderRoute() {
     if (window.location.hash === '#logout') {
       this.callbacks.onlogout();
       return;
@@ -78,12 +85,20 @@ export default class NavigationController {
       return routePath === currentPath;
     });
 
+    if (!route) {
+      throw new Error('Unable to locate route for path ' + currentPath);
+    }
+
+    if (!route.controller) {
+      throw new Error('Unable to locate controller for path ' + currentPath);
+    }
+
     if (route && this.callbacks && this.callbacks.onnavigate) {
       this.callbacks.onnavigate({ controller: route.controller });
     }
+  }
 
-    if (!route) {
-      console.error('Unable to locate route for path', currentPath);
-    }
+  setCallbacks(callbacks) {
+    this.callbacks = callbacks;
   }
 }
