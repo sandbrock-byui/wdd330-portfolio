@@ -60,7 +60,30 @@ export default class EditRecipeView {
     this.connectFormListeners();
   }
 
-  saveBtnClickCallback(e) {
+  renderError(message) {
+    const errorEl = this.rootEl.querySelector('#error-message');
+    errorEl.innerHTML = message;
+    errorEl.classList.add('error-message-active');
+  }
 
+  saveBtnClickCallback(e) {
+    e.preventDefault();
+
+    const title = document.querySelector('#title').value;
+    const description = document.querySelector('#description').value;
+    const ingredients = document.querySelector('#ingredients').value;
+    const instructions = document.querySelector('#instructions').value;
+
+    const recipe = this.recipe || {};
+    recipe.title = title;
+    recipe.description = description;
+    recipe.ingredients = ingredients;
+    recipe.instructions = instructions;
+
+    this.callbacks.onsave(recipe);
+  }
+
+  setCallbacks(callbacks) {
+    this.callbacks = callbacks;
   }
 };

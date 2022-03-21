@@ -25,11 +25,11 @@ export default class App {
     this.navigationController.logout();
   }
 
-  navigateCallback(e) {
+  async navigateCallback(e) {
     if (!e.controller) {
       throw new Error('Unable to locate controller for selected route.');
     }
     this.workspaceController = e.controller;
-    this.workspaceController.render();
+    await this.workspaceController.render();
   }
 };

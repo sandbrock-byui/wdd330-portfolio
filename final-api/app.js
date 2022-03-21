@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
 
+const recipeRoutes = require('./routes/recipe.routes');
 const userRoutes = require('./routes/user.routes');
 
 // Load environment variables
@@ -52,6 +53,7 @@ app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use(bodyParser.json());
 
 // Internal routes
+app.use('/recipes', recipeRoutes);
 app.use('/users', userRoutes);
 
 // Error handling

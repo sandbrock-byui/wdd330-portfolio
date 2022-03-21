@@ -1,4 +1,4 @@
-export default class RecipeView {
+export default class RecipeDetailView {
   constructor(diService) {
     this.config = diService.get('config');
     this.navigationController = diService.get('navigationController');
@@ -25,8 +25,8 @@ export default class RecipeView {
       <div class="recipe-detail-header">
         <h2 class="recipe-detail--title">${recipe.title}</h2>
         <div class="recipe-detail--buttons">
-          <input class="submitBtn recipe-list-item--detail-link" id="return-recipe-button" type="submit" value="Return">
           <input class="submitBtn recipe-list-item--detail-link" id="edit-recipe-button" type="submit" value="Edit">
+          <input class="submitBtn recipe-list-item--detail-link" id="return-recipe-button" type="submit" value="Return">
         </div>
       </div>
       <h3 class="recipe-detail--description-header">Description</h3>

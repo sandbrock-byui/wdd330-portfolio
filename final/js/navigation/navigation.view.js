@@ -1,8 +1,8 @@
 export default class NavigationView {
-  loggedIn = false;
-
   constructor(diService) {
     this.config = diService.get('config');
+    this.sessionService = diService.get('sessionService');
+    this.loggedIn = this.sessionService.getLoggedIn();
     this.navigationEl = document.querySelector(this.config.selectors.navigation);
     if (!this.navigationEl) {
       throw new Error(
@@ -35,7 +35,7 @@ export default class NavigationView {
   connectNavigationCallbacks() {
     const routes = this.navigationEl.querySelectorAll('.route');
     routes.forEach(route => {
-      route.addEventListener('click', this.navigationClickCallback.bind(this));
+      route.addEventListener('click', this.navigationClickCallback.bind(this), false);
     });
   }
 
@@ -81,7 +81,7 @@ export default class NavigationView {
   }
 
   navigationClickCallback(e) {
-    e.preventDefault;
+    e.preventDefault();
     const href = e.target.getAttribute('href');
     this.callbacks.onnavigate(href);
   }

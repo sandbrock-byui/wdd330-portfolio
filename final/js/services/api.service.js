@@ -1,8 +1,7 @@
 export default class ApiService {
-  jwt = null;
-
   constructor(diService) {
     this.config = diService.get('config');
+    this.sessionService = diService.get('sessionService');
   }
 
   async invoke(method, url, body) {
@@ -10,6 +9,7 @@ export default class ApiService {
       'Content-Type': 'application/json'
     };
 
+    const jwt = this.sessionService.getApiToken();
     if (this.jwt) {
       headers['Authorization'] = `Bearer ${this.jwt}`;
     }
@@ -24,14 +24,18 @@ export default class ApiService {
     }
   
     const result = {
+      data: null,
       message: null,
-      success: false,
-      data: null
+      status: 0,
+      success: false
     }
     
     try {
       const response = await fetch(`${this.config.baseApiUrl}${url}`, options);
       const json = await response.json();
+
+      result.code = response.status;
+      
       if (response.ok) {
         result.success = true;
         result.data = json;
@@ -43,9 +47,5 @@ export default class ApiService {
       result.message = 'An error occurred communicating with the server. ' + e.message;
       return result;
     }
-  }
-
-  setJWT(value) {
-    this.jwt = value;
   }
 }

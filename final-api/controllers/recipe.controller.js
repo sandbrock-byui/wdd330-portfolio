@@ -99,7 +99,7 @@ exports.getRecipe = (req, res, next) => {
 
 exports.getAllRecipes = (req, res, next) => {
   Recipe.find().then((recipes) => {
-    if (!recipe) {
+    if (!recipes) {
       const error = new Error('Could not find recipe.');
       error.statusCode = 404;
       throw error;

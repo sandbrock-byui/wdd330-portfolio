@@ -2,6 +2,7 @@
 export default class NavigationController {
   constructor(diService) {
     this.diService = diService;
+    this.sessionService = diService.get('sessionService');
     this.config = diService.get('config');
     this.view = diService.get('navigationView');
     const navigationCallbacks = {
@@ -10,13 +11,13 @@ export default class NavigationController {
     this.view.setCallbacks(navigationCallbacks);
     diService.register('navigationCallbacks', navigationCallbacks);
 
-    this.loggedin = false;
+    this.loggedin = this.sessionService.getLoggedIn();
   }
 
-  initialize() {
+  async initialize() {
     this.registerRoutes();
     this.view.initialize();
-    this.renderRoute();
+    await this.renderRoute();
   }
 
   login() {
@@ -31,14 +32,13 @@ export default class NavigationController {
     this.navigate('index.html#login');
   }
 
-  navigateCallback() {
-    this.renderRoute();
+  async navigateCallback(path) {
+    await this.navigate(path);
   }
 
-  navigate(path) {
-    //window.location.assign(path);
+  async navigate(path) {
     window.history.pushState(null, '', path);
-    this.renderRoute();
+    await this.renderRoute();
   }
 
   registerRoute(path, controller) {
@@ -63,12 +63,12 @@ export default class NavigationController {
     this.registerRoute('/index.html#login', this.diService.get('loginController'));
     this.registerRoute('/index.html#nutrition', this.diService.get('nutritionController'));
     this.registerRoute('/index.html#profile', this.diService.get('profileController'));
-    this.registerRoute('/index.html#recipe', this.diService.get('recipeController'));
+    this.registerRoute('/index.html#recipe', this.diService.get('recipeDetailController'));
     this.registerRoute('/index.html#recipes', this.diService.get('recipeListController'));
     this.registerRoute('/index.html#signup', this.diService.get('signupController'));
   }
 
-  renderRoute() {
+  async renderRoute() {
     if (window.location.hash === '#logout') {
       this.callbacks.onlogout();
       return;
@@ -94,7 +94,7 @@ export default class NavigationController {
     }
 
     if (route && this.callbacks && this.callbacks.onnavigate) {
-      this.callbacks.onnavigate({ controller: route.controller });
+      await this.callbacks.onnavigate({ controller: route.controller });
     }
 
     this.view.highlightActiveRoute();

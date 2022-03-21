@@ -144,23 +144,27 @@ Mix bread crumbs with butter in bowl and sprinkle over tuna mixture. Bake for 5 
 ];
 
 export default class RecipeModel {
-  getAll() {
-    return recipes.sort((recipe1, recipe2) => {
-      if (recipe1.title < recipe2.title) {
-        return -1;
-      }
-
-      if (recipe1.title === recipe2.title) {
-        return 0;
-      }
-
-      if (recipe1.title > recipe2.title) {
-        return 1;
-      }
-    });
+  constructor(diService) {
+    this.apiService = diService.get('apiService');
   }
 
-  getById(id) {
-    return recipes.find(recipe => recipe._id === id);
+  async create(recipe) {
+    const result = await this.apiService.invoke('POST', '/recipes', recipe);
+    return result;
+  }
+
+  async getAll() {
+    const result = await this.apiService.invoke('GET', '/recipes', null);
+    return result;
+  }
+
+  async getById(id) {
+    const result = await this.apiService.invoke('GET', `/recipes/${id}`, null);
+    return result;
+  }
+
+  async update(recipe) {
+    const result = await this.apiService.invoke('PUT', '/recipes', recipe);
+    return result;
   }
 };

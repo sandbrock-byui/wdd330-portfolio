@@ -1,6 +1,7 @@
 const express = require('express');
 const { body } = require('express-validator');
 
+const isAuth = require('../middleware/isauth.middleware');
 const recipeController = require('../controllers/recipe.controller');
 
 const router = express.Router();
@@ -112,11 +113,11 @@ router.get('/', isAuth, recipeController.getAllRecipes);
 router.post(
   '/',
   [
-    body('userId').require().withMessage('userId is required.'),
-    body('title').require().withMessage('title is required.'),
-    body('description').require().withMessage('description is required.'),
-    body('ingredients').require().withMessage('ingredients is required.'),
-    body('instructions').require().withMessage('instructions is required.')
+    body('userId').notEmpty().withMessage('userId is required.'),
+    body('title').notEmpty().withMessage('title is required.'),
+    body('description').notEmpty().withMessage('description is required.'),
+    body('ingredients').notEmpty().withMessage('ingredients is required.'),
+    body('instructions').notEmpty().withMessage('instructions is required.')
   ],
   recipeController.createRecipe
 );

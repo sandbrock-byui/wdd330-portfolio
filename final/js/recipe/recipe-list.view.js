@@ -69,6 +69,7 @@ export default class RecipeListView {
         <h2>Edible Delights Recipes</h2>
         <input class="submitBtn recipe-list--add-button" type="submit" value="Add">
       </div>
+      <p class="error-message" id="error-message"><p>
     `;
 
     recipes.forEach(recipe => {
@@ -87,5 +88,15 @@ export default class RecipeListView {
 
     this.rootEl.innerHTML = recipesEl.innerHTML;
     this.connectRecipeCallbacks();
+  }
+
+  renderError(message) {
+    const errorEl = this.rootEl.querySelector('#error-message');
+    errorEl.innerHTML = message;
+    if (message) {
+      errorEl.classList.add('error-message-active');
+    } else {
+      errorEl.classList.remove('error-message-active');
+    }
   }
 };
