@@ -1,6 +1,6 @@
 const recipes = [
   {
-    id: "1",
+    _id: "1",
     userId: "1",
     title: "Flour Tortillas",
     description: 'These Best Ever Homemade Flour Tortillas are so simple and unbelievably delicious!',
@@ -19,7 +19,7 @@ Make a well in the center of the dry ingredients and add the oil and water. Stir
 Turn dough out onto a lightly floured work surface and knead for 1-2 minutes until the dough is nice and smooth. Proceed with step number 3 below for the remainder of the recipe.`
   },
   {
-    id: "2",
+    _id: "2",
     userId: "2",
     title: "Apple Pie",
     description: "Our homemade apple pie is sure to be the best apple pie recipe you've made to date.",
@@ -43,7 +43,7 @@ In large bowl, gently mix filling ingredients; spoon into crust-lined pie plate.
 Bake 40 to 45 minutes or until apples are tender and crust is golden brown. Cover edge of crust with 2- to 3-inch wide strips of foil after first 15 to 20 minutes of baking to prevent excessive browning. Cool on cooling rack at least 2 hours before serving.`
   },
   {
-    id: "3",
+    _id: "3",
     userId: "3",
     title: "Smoked Ribs",
     description: "Our famously easy 3-2-1 ribs recipe will make your rib game the envy of the neighborhood",
@@ -66,7 +66,7 @@ Carefully remove the foil from the ribs and brush the ribs on both sides with Tr
 Let the ribs rest for a few minutes before serving. Enjoy!`
   },
   {
-    id: "4",
+    _id: "4",
     userId: "4",
     title: "Chicken Tacos",
     description: "I think this will be my go-to weeknight meal for the next few weeks. No, wait, months probably.",
@@ -92,7 +92,7 @@ Heat canola oil in a large skillet over medium high heat. Working in batches, ad
 Serve chicken in tortillas, topped with pico de gallo, avocado, cilantro and lime.`
   },
   {
-    id: "5",
+    _id: "5",
     userId: "5",
     title: "Funeral Potatoes",
     description: "These easy and delicious Funeral Potatoes (also called cheesy potatoes) are a cheesy hash brown casserole that makes the perfect warm side dish for any meal, holiday dinner, or potluck.",
@@ -122,7 +122,7 @@ Add remaining 4 tablespoons of melted butter to the crushed cornflakes and combi
 Bake uncovered at 350 F for 40-50 minutes.`
   },
   {
-    id: "6",
+    _id: "6",
     userId: "6",
     title: "Tuna Noodle Caserole",
     description: "Campbell's® Condensed Cream of Mushroom Soup flavors a creamy sauce that is mixed with tuna, egg noodles and peas, topped with a crunchy bread crumb topping and baked to perfection.",
@@ -161,6 +161,6 @@ export default class RecipeModel {
   }
 
   getById(id) {
-    return recipes.find(recipe => recipe.id === id);
+    return recipes.find(recipe => recipe._id === id);
   }
 };

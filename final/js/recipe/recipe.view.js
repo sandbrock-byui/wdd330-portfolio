@@ -6,16 +6,28 @@ export default class RecipeView {
   }
 
   connectRecipeDetailListeners() {
-    const returnBtn = this.rootEl.querySelector('div.recipe-detail-header input');
+    const editBtn = this.rootEl.querySelector('#edit-recipe-button');
+    editBtn.addEventListener('click', this.editClickCallback.bind(this));
+
+    const returnBtn = this.rootEl.querySelector('#return-recipe-button');
     returnBtn.addEventListener('click', this.returnClickCallback.bind(this));
   }
 
+  editClickCallback(e) {
+    e.preventDefault();
+    this.navigationController.navigate(`index.html?id=${this.recipe._id}#edit-recipe`);
+  }
+
   render(recipe) {
+    this.recipe = recipe;
     const recipeEl = document.createElement('div');
     recipeEl.innerHTML = `
       <div class="recipe-detail-header">
         <h2 class="recipe-detail--title">${recipe.title}</h2>
-        <input class="submitBtn recipe-list-item--detail-link" type="submit" value="Return">
+        <div class="recipe-detail--buttons">
+          <input class="submitBtn recipe-list-item--detail-link" id="return-recipe-button" type="submit" value="Return">
+          <input class="submitBtn recipe-list-item--detail-link" id="edit-recipe-button" type="submit" value="Edit">
+        </div>
       </div>
       <h3 class="recipe-detail--description-header">Description</h3>
       <p class="recipe-detail--description">${recipe.description}</p>

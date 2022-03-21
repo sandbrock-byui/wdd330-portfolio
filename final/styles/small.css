@@ -337,8 +337,13 @@ input.submitBtn:hover {
   display: flex;
 }
 
-.recipe-detail-header .submitBtn {
+.recipe-detail--buttons {
+  display: flex;
   margin-left: auto;
+  margin-right: 0.5rem;
+}
+
+.recipe-detail-buttons .submitBtn {
   max-width: 7rem;
 }
 

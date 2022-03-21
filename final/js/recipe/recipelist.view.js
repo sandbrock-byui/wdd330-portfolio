@@ -6,7 +6,6 @@ export default class RecipeListView {
   }
 
   addClickCallback(e) {
-    console.log('Add recipe');
     this.navigationController.navigate('index.html#edit-recipe')
   }
 
@@ -77,7 +76,7 @@ export default class RecipeListView {
         <div class="recipe-list-item">
           <div class="recipe-list-item--header">
             <strong>${recipe.title}</strong>
-            <input class="submitBtn recipe-list-item--detail-link" type="submit" value="Open" data-id="${recipe.id}">
+            <input class="submitBtn recipe-list-item--detail-link" type="submit" value="Open" data-id="${recipe._id}">
           </div>
           <div class="recipe-list-item--detail">
             <p class="recipe-list-item--detail--description">${recipe.description}</p>
