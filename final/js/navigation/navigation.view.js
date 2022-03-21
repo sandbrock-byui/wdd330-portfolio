@@ -1,7 +1,8 @@
 export default class NavigationView {
+  loggedIn = false;
+
   constructor(diService) {
     this.config = diService.get('config');
-
     this.navigationEl = document.querySelector(this.config.selectors.navigation);
     if (!this.navigationEl) {
       throw new Error(
@@ -23,6 +24,8 @@ export default class NavigationView {
     this.hamburgerEl.addEventListener(
       'click',
       (e) => {
+        console.log('hamburger clicked!');
+        this.navigationEl = document.querySelector(this.config.selectors.navigation);
         this.navigationEl.classList.toggle('responsive');
       },
       false
@@ -30,19 +33,10 @@ export default class NavigationView {
   }
 
   connectNavigationCallbacks() {
-    // Connect route click handlers
-    /*
-    const routeEls = document.querySelectorAll('.route');
-    routeEls.forEach((routeEl) => {
-      routeEl.addEventListener('click', (e) => {
-        //e.preventDefault();
-        const path = e.target.getAttribute('href');
-        if (this.callbacks && this.callbacks.onnavigate) {
-          this.callbacks.onnavigate(path);
-        }
-      });
+    const routes = this.navigationEl.querySelectorAll('.route');
+    routes.forEach(route => {
+      route.addEventListener('click', this.navigationClickCallback.bind(this));
     });
-    */
   }
 
   connectWindowCallbacks() {
@@ -73,31 +67,42 @@ export default class NavigationView {
   }
 
   initialize() {
-    this.connectNavigationCallbacks();
+    this.render();
   }
 
   login() {
-    const needsAuthEls = this.navigationEl.querySelectorAll('.needs-auth');
-    needsAuthEls.forEach(el => {
-      el.classList.add('needs-auth--authorized');
-    });
-
-    const noAuthEls = this.navigationEl.querySelectorAll('.no-auth');
-    noAuthEls.forEach(el => {
-      el.classList.add('no-auth--authorized');
-    });
+    this.loggedIn = true;
+    this.render();
   }
 
   logout() {
-    const needsAuthEls = this.navigationEl.querySelectorAll('.needs-auth');
-    needsAuthEls.forEach(el => {
-      el.classList.remove('needs-auth--authorized');
-    });
+    this.loggedIn = false;
+    this.render();
+  }
 
-    const noAuthEls = this.navigationEl.querySelectorAll('.no-auth');
-    noAuthEls.forEach(el => {
-      el.classList.remove('no-auth--authorized');
-    });
+  navigationClickCallback(e) {
+    e.preventDefault;
+    const href = e.target.getAttribute('href');
+    this.callbacks.onnavigate(href);
+  }
+
+  render() {
+    const navEl = document.createElement('div');
+    if (this.loggedIn) {
+      navEl.innerHTML = `
+        <li><a href="#home" class="route">Home</a></li>
+        <li><a href="#recipes" class="route">Recipes</a></li>
+        <li><a href="#profile" class="route">Profile</a></li>
+        <li><a href="#logout" class="route">Logout</a></li>
+      `;
+    } else {
+      navEl.innerHTML = `
+        <li><a href="#login" class="route">Login</a></li>
+        <li><a href="#signup" class="route">Sign Up</a></li>
+      `;
+    }
+    this.navigationEl.innerHTML = navEl.innerHTML;
+    this.connectNavigationCallbacks();
   }
 
   setCallbacks(callbacks) {

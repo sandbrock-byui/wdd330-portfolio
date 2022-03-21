@@ -6,7 +6,9 @@ export default class UserModel {
 
   async login(credentials) {
     const result = await this.apiService.invoke('POST', '/users/login', credentials);
-    this.apiService.setJWT(result.data.token);
+    if (result.success) {
+      this.apiService.setJWT(result.data.token);
+    }
     return result;
   }
 

@@ -41,15 +41,3 @@
     text-indent: 0;
   }
 }
-
-.navigation li.needs-auth {
-  display: none;
-}
-
-.navigation li.needs-auth--authorized {
-  display: block;
-}
-
-.navigation li.no-auth--authorized {
-  display: none;
-}

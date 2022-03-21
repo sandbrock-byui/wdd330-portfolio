@@ -99,6 +99,10 @@ export default class NavigationController {
     this.view.highlightActiveRoute();
   }
 
+  render() {
+    this.view.render();
+  }
+
   setCallbacks(callbacks) {
     this.callbacks = callbacks;
   }

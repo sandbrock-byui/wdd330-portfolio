@@ -29,7 +29,7 @@ const config = {
   baseApiUrl: 'http://localhost:5499',
   selectors: {
     hamburger: '.hamburgerButton',
-    navigation: '.navigation',
+    navigation: '#navigation',
     workspace: '#workspace', 
     footer: '#footer'
   }
