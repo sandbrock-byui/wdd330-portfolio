@@ -53,7 +53,6 @@ export default class NavigationView {
     });
 
     window.addEventListener('popstate', (e) => {
-      this.highlightActiveRoute();
       if (this.callbacks && this.callbacks.onnavigate) {
         this.callbacks.onnavigate();
       }

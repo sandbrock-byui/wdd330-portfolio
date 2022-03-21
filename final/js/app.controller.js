@@ -13,7 +13,6 @@ export default class App {
   }
 
   initialize() {
-    console.log('Initializing main application.');
     this.navigationController.initialize();
     //this.footerController.render();
   }

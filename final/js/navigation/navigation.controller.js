@@ -57,10 +57,9 @@ export default class NavigationController {
   }
 
   registerRoutes() {
-    console.log('Registering routes.');
     this.routes = [];
     this.registerRoute('/index.html#home', this.diService.get('homeController'));
-    this.registerRoute('/index.html#login', this.diService.get('recipeListController'));
+    this.registerRoute('/index.html#login', this.diService.get('loginController'));
     this.registerRoute('/index.html#nutrition', this.diService.get('nutritionController'));
     this.registerRoute('/index.html#profile', this.diService.get('profileController'));
     this.registerRoute('/index.html#recipe', this.diService.get('recipeController'));
@@ -96,6 +95,8 @@ export default class NavigationController {
     if (route && this.callbacks && this.callbacks.onnavigate) {
       this.callbacks.onnavigate({ controller: route.controller });
     }
+
+    this.view.highlightActiveRoute();
   }
 
   setCallbacks(callbacks) {

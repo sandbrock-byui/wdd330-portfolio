@@ -1,7 +1,6 @@
 export default class LoginView {
   constructor(diService) {
     this.config = diService.get('config');
-    this.callbacks = diService.get('appCallbacks');
     this.rootEl = document.querySelector(this.config.selectors.workspace);
   }
 
@@ -10,7 +9,13 @@ export default class LoginView {
     submitBtn.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      this.callbacks.onlogin();
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      this.callbacks.onlogin({
+        email, 
+        password
+      });
     });
   }
   
@@ -20,8 +25,9 @@ export default class LoginView {
       <form id="input-form">
         <fieldset>
           <legend>Login</legend>
-          <label class="label-top">Email: <input type="email" name="username" required></label>
-          <label class="label-top">Password: <input type="password" name="password" required></label>
+          <p class="error-message" id="error-message"><p>
+          <label class="label-top">Email: <input type="email" name="email" id="email" required></label>
+          <label class="label-top">Password: <input type="password" name="password" id="password" required></label>
         </fieldset>
 
         <input class="submitBtn" type="submit" value="Login">
@@ -30,5 +36,15 @@ export default class LoginView {
     this.rootEl.innerHTML = loginEl.innerHTML;
     this.rootEl = document.querySelector(this.config.selectors.workspace);
     this.connectFormCallbacks();
+  }
+
+  renderError(message) {
+    const errorEl = this.rootEl.querySelector('#error-message');
+    errorEl.innerHTML = message;
+    errorEl.classList.add('error-message-active');
+  }
+
+  setCallbacks(callbacks) {
+    this.callbacks = callbacks;
   }
 };

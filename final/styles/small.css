@@ -97,6 +97,27 @@ h5 {
   font-size: 0.8rem;
 }
 
+.error-message {
+  display: none;
+  color: red;
+}
+
+.error-message-active {
+  display: block;
+}
+
+.success-message {
+  display: none;
+  color: green;
+}
+
+.success-message-active {
+  display: block;
+}
+
+/*********************
+ * Navigation
+ *********************/
 .hamburger {
   margin-left: 2rem;
   margin-top: 1.5rem;
@@ -108,9 +129,6 @@ h5 {
   cursor: pointer;
 }
 
-/*********************
- * Navigation
- *********************/
 nav {
   background-color: var(--nav-background);
 }
@@ -190,20 +208,20 @@ main {
 }
 
 form fieldset {
-  border: 1px solid rgba(0, 0, 0, .3);
+  border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   margin-bottom: 1rem;
 }
 
-form label.label-top, 
+form label.label-top,
 form div.label {
   display: block;
   padding-top: 1rem;
 }
 
-form label.label-top>input,
-form label.label-top>select,
-form label.label-top>textarea {
+form label.label-top > input,
+form label.label-top > select,
+form label.label-top > textarea {
   /*-webkit-appearance: none;*/
   background-color: white;
   border: solid 1px #999;
@@ -212,17 +230,17 @@ form label.label-top>textarea {
   display: block;
   font-size: 1rem;
   max-width: 20rem;
-  padding: .75rem;
+  padding: 0.75rem;
   width: 100%;
 }
 
-form label.label-top>select {
+form label.label-top > select {
   width: 100%;
 }
 
 form label.label-right {
   display: block;
-  padding: .75rem 0;
+  padding: 0.75rem 0;
 }
 
 form label.label-top input:required {
@@ -235,13 +253,13 @@ form label.label-top input:required:valid {
 
 .submitBtn {
   background-color: var(--nav-background);
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   color: white;
   cursor: pointer;
   display: block;
   margin: 0 2%;
   max-width: 20rem;
-  padding: .75rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   width: 96%;
 }
 
@@ -253,7 +271,7 @@ input.submitBtn:hover {
  * Recipe List
  *********************/
 .recipe-list-item {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   margin-bottom: 1rem;
   color: var(--recipe-header);
@@ -269,18 +287,18 @@ input.submitBtn:hover {
 
 .recipe-list-item--header .submitBtn {
   margin-left: auto;
-  max-width: 6rem; 
+  max-width: 6rem;
 }
 
 .recipe-list-item--detail {
   background-color: white;
   height: 0px;
-  transition: height .4s;
+  transition: height 0.4s;
 }
 
 .recipe-list-item--detail-active {
   height: auto;
-  transition: height .4s;
+  transition: height 0.4s;
 }
 
 .recipe-list-item--detail .recipe-list-item--detail--description {
@@ -303,7 +321,7 @@ input.submitBtn:hover {
 
 .recipe-detail-header .submitBtn {
   margin-left: auto;
-  max-width: 7rem; 
+  max-width: 7rem;
 }
 
 .recipe-detail--ingredients-header,
@@ -322,5 +340,5 @@ input.submitBtn:hover {
 footer {
   margin-top: 1rem;
   text-align: center;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
