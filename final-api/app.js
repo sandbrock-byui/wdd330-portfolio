@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
 
-const userRoutes = require('./routes/users.routes');
+const userRoutes = require('./routes/user.routes');
 
 // Load environment variables
 dotenv.config();

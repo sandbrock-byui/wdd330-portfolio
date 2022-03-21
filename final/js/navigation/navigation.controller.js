@@ -58,6 +58,7 @@ export default class NavigationController {
 
   registerRoutes() {
     this.routes = [];
+    this.registerRoute('/index.html#edit-recipe', this.diService.get('editRecipeController'));
     this.registerRoute('/index.html#home', this.diService.get('homeController'));
     this.registerRoute('/index.html#login', this.diService.get('loginController'));
     this.registerRoute('/index.html#nutrition', this.diService.get('nutritionController'));

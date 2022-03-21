@@ -1,6 +1,8 @@
 import AppController from './app.controller.js';
 import ApiService from './services/api.service.js';
 import DependencyInjectionService from './services/dependencyinjection.service.js';
+import EditRecipeController from './recipe/edit-recipe.controller.js';
+import EditRecipeView from './recipe/edit-recipe.view.js';
 import FooterController from './footer/footer.controller.js';
 import FooterView from './footer/footer.view.js';
 import LoginController from './user/login.controller.js';
@@ -47,6 +49,8 @@ diService.register('navigationController', new NavigationController(diService));
 diService.register('footerView', new FooterView(diService));
 diService.register('footerController', new FooterController(diService));
 diService.register('appController', new AppController(diService));
+diService.register('editRecipeView', new EditRecipeView(diService));
+diService.register('editRecipeController', new EditRecipeController(diService));
 diService.register('homeView', new HomeView(diService));
 diService.register('homeController', new HomeController(diService));
 diService.register('nutritionView', new NutritionView(diService));

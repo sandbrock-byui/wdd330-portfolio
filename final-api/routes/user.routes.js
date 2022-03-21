@@ -2,7 +2,7 @@ const express = require('express');
 const { body } = require('express-validator');
 
 const User = require('../models/user.model');
-const userController = require('../controllers/users.controller');
+const userController = require('../controllers/user.controller');
 const isAuth = require('../middleware/isauth.middleware');
 
 const router = express.Router();
@@ -178,16 +178,9 @@ router.post(
 
 /**
  * @swagger
- * /users/{userId}:
+ * /users:
  *   put:
- *     summary: Updates a user's password
- *     parameters:
- *     - name: userId
- *       in: path
- *       required: true
- *       description: ID of the user to retrieve.
- *       schema:
- *         type: string
+ *     summary: Updates the logged in user's password
  *     requestBody:
  *       required: true
  *       content:
@@ -201,7 +194,7 @@ router.post(
  *                 example: secure1234
  *     responses:
  *       201:
- *         description: The ID of the newly created user.
+ *         description: The user was successfully updated.
  *         content:
  *           application/json:
  *             schema:
@@ -213,6 +206,6 @@ router.post(
  *     tags:
  *       - Users
  */
-router.put('/:userId', isAuth, userController.updatePassword);
+router.put('/', isAuth, userController.updatePassword);
 
 module.exports = router;

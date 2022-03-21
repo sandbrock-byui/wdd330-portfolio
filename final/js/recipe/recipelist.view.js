@@ -5,7 +5,15 @@ export default class RecipeListView {
     this.rootEl = document.querySelector(this.config.selectors.workspace);
   }
 
+  addClickCallback(e) {
+    console.log('Add recipe');
+    this.navigationController.navigate('index.html#edit-recipe')
+  }
+
   connectRecipeCallbacks() {
+    const addBtn = this.rootEl.querySelector('.recipe-list--add-button');
+    addBtn.addEventListener('click', this.addClickCallback.bind(this), false);
+
     const headers = this.rootEl.querySelectorAll('.recipe-list-item--header');
     headers.forEach(header => {
       header.addEventListener('click', this.headerClickCallback.bind(this));
@@ -25,8 +33,8 @@ export default class RecipeListView {
       recipeEl = e.target.parentElement;      
       
     }
-    const detailEl = recipeEl.querySelector('.recipe-list-item--detail');
 
+    const detailEl = recipeEl.querySelector('.recipe-list-item--detail');
     if (!recipeEl || !detailEl) {
       return;
     }
@@ -58,7 +66,10 @@ export default class RecipeListView {
   render(recipes) {
     const recipesEl = document.createElement('div');
     recipesEl.innerHTML = `
-      <h2>Edible Delights Recipes</h2>
+      <div class="recipe-list-header">
+        <h2>Edible Delights Recipes</h2>
+        <input class="submitBtn recipe-list--add-button" type="submit" value="Add">
+      </div>
     `;
 
     recipes.forEach(recipe => {
