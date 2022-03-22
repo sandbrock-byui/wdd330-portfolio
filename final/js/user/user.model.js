@@ -18,4 +18,9 @@ export default class UserModel {
     const result = await this.apiService.invoke('POST', '/users', credentials);
     return result;
   }
+
+  async update(credentials) {
+    const result = await this.apiService.invoke('PUT', '/users', credentials);
+    return result;
+  }
 };
