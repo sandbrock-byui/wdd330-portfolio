@@ -10,8 +10,6 @@ export default class NavigationController {
     };
     this.view.setCallbacks(navigationCallbacks);
     diService.register('navigationCallbacks', navigationCallbacks);
-
-    this.loggedin = this.sessionService.getLoggedIn();
   }
 
   async initialize() {
@@ -21,13 +19,12 @@ export default class NavigationController {
   }
 
   login() {
-    this.loggedin = true;
     this.view.login();
     this.navigate('index.html#home');
   }
 
   logout() {
-    this.loggedin = false;
+    this.sessionService.clear();
     this.view.logout();
     this.navigate('index.html#login');
   }
@@ -74,7 +71,7 @@ export default class NavigationController {
       return;
     }
 
-    // if (!this.loggedin && (window.location.hash !== "#login" && window.location.hash !== "#signup")) {
+    // if (!this.sessionService.getLoggedIn() && (window.location.hash !== "#login" && window.location.hash !== "#signup")) {
     //   this.logout();
     //   return;
     // }

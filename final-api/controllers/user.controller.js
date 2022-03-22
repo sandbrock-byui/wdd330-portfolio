@@ -45,7 +45,7 @@ exports.createUser = (req, res, next) => {
 exports.deleteUser = (req, res, next) => {
   const userId = req.params.userId;
 
-  if (userId !== req.userId) {
+  if (userId.toString() !== req.userId.toString()) {
     const error = new Error('Not authorized!');
     error.statusCode = 403;
     throw error;
@@ -76,7 +76,7 @@ exports.deleteUser = (req, res, next) => {
 exports.getUser = (req, res, next) => {
   const userId = req.params.userId;
 
-  if (userId !== req.userId) {
+  if (userId.toString() !== req.userId.toString()) {
     const error = new Error('Not authorized!');
     error.statusCode = 403;
     throw error;

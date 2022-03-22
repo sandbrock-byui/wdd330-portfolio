@@ -1,4 +1,8 @@
 export default class SessionService {
+  clear() {
+    localStorage.clear();
+  }
+
   getApiToken() {
     return localStorage.getItem('apiKey');
   }

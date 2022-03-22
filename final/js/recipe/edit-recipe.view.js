@@ -7,6 +7,7 @@ export default class EditRecipeView {
 
   cancelBtnClickCallback(e) {
     e.preventDefault();
+
     if (this.recipe) {
       this.navigationController.navigate(`index.html?id=${this.recipe._id}#recipe`);
     } else {

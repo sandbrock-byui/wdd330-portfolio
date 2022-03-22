@@ -5,7 +5,7 @@ export default class RecipeDetailView {
     this.rootEl = document.querySelector(this.config.selectors.workspace);
   }
 
-  connectRecipeDetailListeners() {
+  connectRecipeDetailCallbacks() {
     const editBtn = this.rootEl.querySelector('#edit-recipe-button');
     editBtn.addEventListener('click', this.editClickCallback.bind(this));
 
@@ -38,7 +38,7 @@ export default class RecipeDetailView {
     `;
 
     this.rootEl.innerHTML = recipeEl.innerHTML;
-    this.connectRecipeDetailListeners();
+    this.connectRecipeDetailCallbacks();
   }
 
   returnClickCallback(e) {

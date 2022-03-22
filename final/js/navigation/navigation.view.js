@@ -2,7 +2,6 @@ export default class NavigationView {
   constructor(diService) {
     this.config = diService.get('config');
     this.sessionService = diService.get('sessionService');
-    this.loggedIn = this.sessionService.getLoggedIn();
     this.navigationEl = document.querySelector(this.config.selectors.navigation);
     if (!this.navigationEl) {
       throw new Error(
@@ -71,12 +70,10 @@ export default class NavigationView {
   }
 
   login() {
-    this.loggedIn = true;
     this.render();
   }
 
   logout() {
-    this.loggedIn = false;
     this.render();
   }
 
@@ -88,7 +85,7 @@ export default class NavigationView {
 
   render() {
     const navEl = document.createElement('div');
-    if (this.loggedIn) {
+    if (this.sessionService.getLoggedIn()) {
       navEl.innerHTML = `
         <li><a href="#home" class="route">Home</a></li>
         <li><a href="#recipes" class="route">Recipes</a></li>

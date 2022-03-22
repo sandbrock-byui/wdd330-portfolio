@@ -2,11 +2,15 @@ export default class App {
   constructor(diService) {
     this.config = diService.get('config');
     this.navigationController = diService.get('navigationController');
+    this.view = diService.get('appView');
     const appCallbacks = {
       onnavigate: this.navigateCallback.bind(this),
+      onloadinghide: this.loadingHideCallback.bind(this),
+      onloadingshow: this.loadingShowCallback.bind(this),
       onlogin: this.loginCallback.bind(this),
       onlogout: this.logoutCallback.bind(this)
     };
+    this.view.setCallbacks(appCallbacks);
     this.navigationController.setCallbacks(appCallbacks);
     diService.register('appCallbacks', appCallbacks);
     this.footerController = diService.get('footerController');
@@ -15,6 +19,14 @@ export default class App {
   initialize() {
     this.navigationController.initialize();
     //this.footerController.render();
+  }
+
+  loadingHideCallback() {
+    this.view.hideLoader();
+  }
+
+  loadingShowCallback() {
+    this.view.showLoader();
   }
 
   loginCallback(e) {

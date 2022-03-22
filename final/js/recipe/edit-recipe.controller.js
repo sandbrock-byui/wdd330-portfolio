@@ -15,12 +15,17 @@ export default class EditRecipeController {
     diService.register('editRecipeCallbacks', editRecipeCallbacks);
   }
 
-  render() {
+  async render() {
     const params = this.queryParamService.getQueryParams(); 
     const id = params.id;
     let recipe = null;
     if (id) {
-      recipe = this.model.getById(id);
+      recipe = await this.model.getById(id);
+      if (recipe.success) {
+        recipe = recipe.data.recipe;
+      } else {
+        recipe = null;
+      }
     }
     this.view.render(recipe);
   }
@@ -41,7 +46,8 @@ export default class EditRecipeController {
       recipe.userId = this.sessionService.getUserId();
       result = await this.model.create(recipe);
       if (result.success) {
-        this.navigationController.navigate(`index.html?id=${result.recipeId}#recipe`);
+        const url = `index.html?id=${result.data.recipeId}#recipe`;
+        this.navigationController.navigate(url);
         return;
       }
     }

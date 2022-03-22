@@ -33,7 +33,7 @@ exports.createRecipe = (req, res, next) => {
     .then((result) => {
       res.status(201).json({
         message: 'Recipe created successfully.',
-        userId: result._id
+        recipeId: result._id
       });
     })
     .catch((err) => {
@@ -54,13 +54,13 @@ exports.deleteRecipe = (req, res, next) => {
         throw error;
       }
 
-      if (recipeId !== req.userId) {
+      if (recipe.userId.toString() !== req.userId.toString()) {
         const error = new Error('User not authorized to delete recipe.');
         error.statusCode = 403;
         throw error;
       }
 
-      return Recipe.findByIdAndRemove(userId);
+      return Recipe.findByIdAndRemove(recipeId);
     })
     .then((result) => {
       res.status(200).json({
@@ -77,51 +77,55 @@ exports.deleteRecipe = (req, res, next) => {
 
 exports.getRecipe = (req, res, next) => {
   const recipeId = req.params.recipeId;
-  Recipe.findById(recipeId).then((recipe) => {
-    if (!recipe) {
-      const error = new Error('Could not find recipe.');
-      error.statusCode = 404;
-      throw error;
-    }
+  Recipe.findById(recipeId)
+    .then((recipe) => {
+      if (!recipe) {
+        const error = new Error('Could not find recipe.');
+        error.statusCode = 404;
+        throw error;
+      }
 
-    res.status(200).json({
-      message: 'Recipe retrieved successfully.',
-      recipe: recipe
+      res.status(200).json({
+        message: 'Recipe retrieved successfully.',
+        recipe: recipe
+      });
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
     });
-  })
-  .catch((err) => {
-    if (!err.statusCode) {
-      err.statusCode = 500;
-    }
-    next(err);
-  });
 };
 
 exports.getAllRecipes = (req, res, next) => {
-  Recipe.find().then((recipes) => {
-    if (!recipes) {
-      const error = new Error('Could not find recipe.');
-      error.statusCode = 404;
-      throw error;
-    }
+  Recipe.find()
+    .collation({ locale: 'en', strength: 2 })
+    .sort({ title: 1 })
+    .then((recipes) => {
+      if (!recipes) {
+        const error = new Error('Could not find recipe.');
+        error.statusCode = 404;
+        throw error;
+      }
 
-    res.status(200).json({
-      message: 'Recipes retrieved successfully.',
-      recipes: recipes
+      res.status(200).json({
+        message: 'Recipes retrieved successfully.',
+        recipes: recipes
+      });
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
     });
-  })
-  .catch((err) => {
-    if (!err.statusCode) {
-      err.statusCode = 500;
-    }
-    next(err);
-  });
 };
 
 exports.updateRecipe = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    const errorMsg = errors.errors[0].msg
+    const errorMsg = errors.errors[0].msg;
     const error = new Error(errorMsg);
     error.statusCode = 422;
     error.data = errors.array();
@@ -142,8 +146,10 @@ exports.updateRecipe = (req, res, next) => {
         throw error;
       }
 
-      if (recipe.userId !== req.userId) {
-        const error = new Error('User is not authorized to update this recipe.');
+      if (recipe.userId.toString() !== req.userId.toString()) {
+        const error = new Error(
+          'User is not authorized to update this recipe.'
+        );
         error.statusCode = 403;
         throw error;
       }

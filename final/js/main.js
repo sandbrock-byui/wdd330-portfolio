@@ -1,4 +1,5 @@
 import AppController from './app.controller.js';
+import AppView from './app.view.js';
 import ApiService from './services/api.service.js';
 import DependencyInjectionService from './services/dependencyinjection.service.js';
 import EditRecipeController from './recipe/edit-recipe.controller.js';
@@ -31,10 +32,12 @@ const config = {
   baseUrl: '/final',
   baseApiUrl: 'http://localhost:5499',
   selectors: {
+    footer: '#footer',
     hamburger: '.hamburgerButton',
+    loader: '#loader',
+    loaderOverlay: '#loader-overlay',
     navigation: '#navigation',
-    workspace: '#workspace', 
-    footer: '#footer'
+    workspace: '#workspace'
   }
 };
 
@@ -50,6 +53,7 @@ diService.register('navigationView', new NavigationView(diService));
 diService.register('navigationController', new NavigationController(diService));
 diService.register('footerView', new FooterView(diService));
 diService.register('footerController', new FooterController(diService));
+diService.register('appView', new AppView(diService));
 diService.register('appController', new AppController(diService));
 diService.register('editRecipeView', new EditRecipeView(diService));
 diService.register('editRecipeController', new EditRecipeController(diService));
