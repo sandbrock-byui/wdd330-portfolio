@@ -29,7 +29,7 @@ import UserModel from './user/user.model.js';
 
 // Configure application
 const config = {
-  baseUrl: '/final',
+  baseUrl: '/wdd330-portfolio/final',
   baseApiUrl: 'https://br-wd330-final-api.herokuapp.com',
   selectors: {
     footer: '#footer',
