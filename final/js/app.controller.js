@@ -13,7 +13,6 @@ export default class App {
     this.view.setCallbacks(appCallbacks);
     this.navigationController.setCallbacks(appCallbacks);
     diService.register('appCallbacks', appCallbacks);
-    this.footerController = diService.get('footerController');
   }
 
   initialize() {

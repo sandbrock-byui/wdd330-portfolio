@@ -71,10 +71,10 @@ export default class NavigationController {
       return;
     }
 
-    // if (!this.sessionService.getLoggedIn() && (window.location.hash !== "#login" && window.location.hash !== "#signup")) {
-    //   this.logout();
-    //   return;
-    // }
+    if (!this.sessionService.getLoggedIn() && (window.location.hash !== "#login" && window.location.hash !== "#signup")) {
+      this.logout();
+      return;
+    }
 
     const currentPath = `${window.location.pathname}${window.location.hash}`;
     const route = this.routes.find((r) => {
