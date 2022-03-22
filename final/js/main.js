@@ -30,7 +30,7 @@ import UserModel from './user/user.model.js';
 // Configure application
 const config = {
   baseUrl: '/final',
-  baseApiUrl: 'http://localhost:5499',
+  baseApiUrl: 'https://br-wd330-final-api.herokuapp.com',
   selectors: {
     footer: '#footer',
     hamburger: '.hamburgerButton',
