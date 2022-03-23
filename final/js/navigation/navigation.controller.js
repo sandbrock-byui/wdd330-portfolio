@@ -1,4 +1,3 @@
-
 export default class NavigationController {
   constructor(diService) {
     this.diService = diService;
@@ -46,8 +45,8 @@ export default class NavigationController {
     if (!controller) {
       throw new Error('Controller not specified for route ' + path);
     }
-     
-    this.routes.push({ 
+
+    this.routes.push({
       path,
       controller
     });
@@ -55,14 +54,38 @@ export default class NavigationController {
 
   registerRoutes() {
     this.routes = [];
-    this.registerRoute('/index.html#edit-recipe', this.diService.get('editRecipeController'));
-    this.registerRoute('/index.html#home', this.diService.get('homeController'));
-    this.registerRoute('/index.html#login', this.diService.get('loginController'));
-    this.registerRoute('/index.html#nutrition', this.diService.get('nutritionController'));
-    this.registerRoute('/index.html#profile', this.diService.get('profileController'));
-    this.registerRoute('/index.html#recipe', this.diService.get('recipeDetailController'));
-    this.registerRoute('/index.html#recipes', this.diService.get('recipeListController'));
-    this.registerRoute('/index.html#signup', this.diService.get('signupController'));
+    this.registerRoute(
+      '/index.html#edit-recipe',
+      this.diService.get('editRecipeController')
+    );
+    this.registerRoute(
+      '/index.html#home',
+      this.diService.get('homeController')
+    );
+    this.registerRoute(
+      '/index.html#login',
+      this.diService.get('loginController')
+    );
+    this.registerRoute(
+      '/index.html#nutrition',
+      this.diService.get('nutritionController')
+    );
+    this.registerRoute(
+      '/index.html#profile',
+      this.diService.get('profileController')
+    );
+    this.registerRoute(
+      '/index.html#recipe',
+      this.diService.get('recipeDetailController')
+    );
+    this.registerRoute(
+      '/index.html#recipes',
+      this.diService.get('recipeListController')
+    );
+    this.registerRoute(
+      '/index.html#signup',
+      this.diService.get('signupController')
+    );
   }
 
   async renderRoute() {
@@ -71,8 +94,17 @@ export default class NavigationController {
       return;
     }
 
-    if (!this.sessionService.getLoggedIn() && (window.location.hash !== "#login" && window.location.hash !== "#signup")) {
+    if (
+      !this.sessionService.getLoggedIn() &&
+      window.location.hash !== '#login' &&
+      window.location.hash !== '#signup'
+    ) {
       this.logout();
+      return;
+    }
+
+    if (this.sessionService.getLoggedIn() && !window.location.hash) {
+      this.navigate('#home');
       return;
     }
 
