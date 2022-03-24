@@ -23,7 +23,6 @@ export default class NavigationView {
     this.hamburgerEl.addEventListener(
       'click',
       (e) => {
-        console.log('hamburger clicked!');
         this.navigationEl = document.querySelector(this.config.selectors.navigation);
         this.navigationEl.classList.toggle('responsive');
       },

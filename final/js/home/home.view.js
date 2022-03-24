@@ -7,9 +7,9 @@ export default class HomeView {
   render() {
     const homeEl = document.createElement('div');
     homeEl.innerHTML = `
-      <h2>Edible Delights Home</h2>
+      <h2>Edible Traditions Home</h2>
       <p>
-        Welcome to Edible Delights! You have reached the ultimate online recipe tracking software.
+        Welcome to Edible Traditions! You have reached the ultimate online recipe tracking software.
         It can be used to easily keep track of your recipes. And you can share them with your friends.
       </p>
       <picture>
