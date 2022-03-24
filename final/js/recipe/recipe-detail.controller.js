@@ -12,7 +12,6 @@ export default class RecipeDetailController {
     if (id) {
       const result = await this.model.getById(id);
       if (result.success) {
-        console.log('result', result);
         this.view.render(result.data);
       }
     }
