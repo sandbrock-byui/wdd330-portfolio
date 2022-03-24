@@ -77,10 +77,10 @@ export default class RecipeListView {
         <div class="recipe-list-item">
           <div class="recipe-list-item--header">
             <strong>${recipe.title}</strong>
-            <input class="submitBtn recipe-list-item--detail-link" type="submit" value="Open" data-id="${recipe._id}">
+            <input class="submitBtn recipe-list-item--detail-link" type="submit" value="Open" data-id="${recipe.recipeId}">
           </div>
           <div class="recipe-list-item--detail">
-            <p class="recipe-list-item--detail--description">${recipe.description}</p>
+            <p class="recipe-list-item--detail--description">${recipe.title}</p>
           </div>
         </div>
       `;

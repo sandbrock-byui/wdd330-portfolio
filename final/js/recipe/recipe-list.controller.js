@@ -7,7 +7,6 @@ export default class RecipeListController {
   
   async render() {
     let result = await this.model.getAll();
-
     if (result.success) {
       this.view.render(result.data.recipes);
       //this.view.renderError('');

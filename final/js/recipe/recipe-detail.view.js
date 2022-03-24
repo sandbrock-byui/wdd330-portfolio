@@ -15,7 +15,17 @@ export default class RecipeDetailView {
 
   editClickCallback(e) {
     e.preventDefault();
-    this.navigationController.navigate(`index.html?id=${this.recipe._id}#edit-recipe`);
+    this.navigationController.navigate(
+      `index.html?id=${this.recipe._id}#edit-recipe`
+    );
+  }
+
+  getIngredients(recipe) {
+    let ingredients = '';
+    recipe.ingredients.forEach((ingredient) => {
+      ingredients += ingredient + '\n';
+    });
+    return ingredients;
   }
 
   render(recipe) {
@@ -30,9 +40,9 @@ export default class RecipeDetailView {
         </div>
       </div>
       <h3 class="recipe-detail--description-header">Description</h3>
-      <p class="recipe-detail--description">${recipe.description}</p>
+      <p class="recipe-detail--description">${recipe.title}</p>
       <h3 class="recipe-detail--ingredients-header">Ingredients</h3>
-      <p class="recipe-detail--ingredients">${recipe.ingredients}</p>
+      <p class="recipe-detail--ingredients">${this.getIngredients(recipe)}</p>
       <h3 class="recipe-detail--instructions-header">Instructions</h3>
       <p class="recipe-detail--instructions">${recipe.instructions}</p>
     `;
@@ -46,4 +56,4 @@ export default class RecipeDetailView {
     e.stopPropagation();
     this.navigationController.navigate('index.html#recipes');
   }
-};
+}

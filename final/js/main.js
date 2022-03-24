@@ -27,8 +27,8 @@ import UserModel from './user/user.model.js';
 
 // Configure application
 const config = {
-  baseUrl: '/wdd330-portfolio/final',
-  baseApiUrl: 'https://br-wd330-final-api.herokuapp.com',
+  baseUrl: '/final',
+  baseApiUrl: 'https://edible-traditions.herokuapp.com',
   selectors: {
     footer: '#footer',
     hamburger: '.hamburgerButton',

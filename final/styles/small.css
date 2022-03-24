@@ -414,3 +414,11 @@ footer {
   text-align: center;
   font-size: 0.9rem;
 }
+
+.api-copyright {
+  margin-top: 1rem;
+}
+
+footer ul {
+  list-style-type: none;
+}

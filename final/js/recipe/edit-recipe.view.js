@@ -9,7 +9,9 @@ export default class EditRecipeView {
     e.preventDefault();
 
     if (this.recipe) {
-      this.navigationController.navigate(`index.html?id=${this.recipe._id}#recipe`);
+      this.navigationController.navigate(
+        `index.html?id=${this.recipe._id}#recipe`
+      );
     } else {
       this.navigationController.navigate('index.html#recipes');
     }
@@ -21,6 +23,29 @@ export default class EditRecipeView {
 
     const cancelBtn = this.rootEl.querySelector('#cancel-recipe-button');
     cancelBtn.addEventListener('click', this.cancelBtnClickCallback.bind(this));
+  }
+
+  getIngredientsFromRecipe(recipe) {
+    let ingredients = '';
+    if (!recipe || !recipe.ingredients) {
+      return ingredients;
+    }
+    recipe.ingredients.forEach((ingredient) => {
+      ingredients += ingredient + '\n';
+    });
+    return ingredients;
+  }
+
+  getIngredientsFromUI() {
+    const ingredients = [];
+    const text = document.querySelector('#ingredients').value;
+    const textParts = text.split('\n');
+    textParts.forEach((ingredient) => {
+      if (ingredient) {
+        ingredients.push(ingredient);
+      }
+    });
+    return ingredients;
   }
 
   render(recipe) {
@@ -35,8 +60,8 @@ export default class EditRecipeView {
     }
 
     const title = recipe?.title || '';
-    const description = recipe?.description || '';
-    const ingredients = recipe?.ingredients || '';
+    const description = ''; //recipe?.description || '';
+    //const ingredients = recipe?.ingredients || '';
     const instructions = recipe?.instructions || '';
 
     recipeEl.innerHTML += `
@@ -45,8 +70,10 @@ export default class EditRecipeView {
           <legend>Recipe</legend>
           <p class="error-message" id="error-message"><p>
           <label class="label-top">Title: <input type="text" name="title" id="title" required value="${title}"></label>
-          <label class="label-top">Description: <textarea name="description" id="description" cols="30" rows="4" required>${description}</textarea></label>
-          <label class="label-top">Ingredients: <textarea name="ingredients" id="ingredients" cols="30" rows="6" required>${ingredients}</textarea></label>
+          <!--<label class="label-top">Description: <textarea name="description" id="description" cols="30" rows="4" required>${description}</textarea></label>-->
+          <label class="label-top">Ingredients: <textarea name="ingredients" id="ingredients" cols="30" rows="6" required>${this.getIngredientsFromRecipe(
+            recipe
+          )}</textarea></label>
           <label class="label-top">Instructions: <textarea name="instructions" id="instructions" cols="30" rows="6" required>${instructions}</textarea></label>
         </fieldset>
 
@@ -71,13 +98,13 @@ export default class EditRecipeView {
     e.preventDefault();
 
     const title = document.querySelector('#title').value;
-    const description = document.querySelector('#description').value;
-    const ingredients = document.querySelector('#ingredients').value;
+    //const description = document.querySelector('#description').value;
+    const ingredients = this.getIngredientsFromUI();
     const instructions = document.querySelector('#instructions').value;
 
     const recipe = this.recipe || {};
     recipe.title = title;
-    recipe.description = description;
+    //recipe.description = description;
     recipe.ingredients = ingredients;
     recipe.instructions = instructions;
 
@@ -87,4 +114,4 @@ export default class EditRecipeView {
   setCallbacks(callbacks) {
     this.callbacks = callbacks;
   }
-};
+}

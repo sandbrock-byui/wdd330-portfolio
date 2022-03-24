@@ -22,7 +22,7 @@ export default class EditRecipeController {
     if (id) {
       recipe = await this.model.getById(id);
       if (recipe.success) {
-        recipe = recipe.data.recipe;
+        recipe = recipe.data;
       } else {
         recipe = null;
       }

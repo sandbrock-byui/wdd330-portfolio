@@ -19,7 +19,7 @@ export default class RecipeModel {
   }
 
   async update(recipe) {
-    const result = await this.apiService.invoke('PUT', '/recipes', recipe);
+    const result = await this.apiService.invoke('PUT', `/recipes/${recipe._id}`, recipe);
     return result;
   }
 };
