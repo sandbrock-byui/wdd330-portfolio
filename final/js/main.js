@@ -25,9 +25,15 @@ import SignupController from './user/signup.controller.js';
 import SignupView from './user/signup.view.js';
 import UserModel from './user/user.model.js';
 
+function getBaseUrl() {
+  const delimIdx = window.location.pathname.lastIndexOf('/');
+  const baseUrl = window.location.pathname.substring(0, delimIdx);
+  return baseUrl;
+}
+
 // Configure application
 const config = {
-  baseUrl: '/wdd330-portfolio/final',
+  baseUrl: getBaseUrl(),
   baseApiUrl: 'https://edible-traditions.herokuapp.com',
   selectors: {
     footer: '#footer',
